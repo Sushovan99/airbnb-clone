@@ -1,0 +1,20 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "extends": ["plugin:@typescript-eslint/recommended"],
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "indent": "off",
+    "@typescript-eslint/indent": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "no-console": "warn",
+    "space-in-parens": "error",
+    "no-multiple-empty-lines": "error",
+    "no-const-assign": "error"
+  }
+}
