@@ -1,5 +1,4 @@
 interface Listing {
-  id: string;
   country: string;
   place: string;
   price: number;
@@ -12,7 +11,6 @@ interface Listing {
 
 export const listings: Listing[] = [
   {
-    id: '001',
     country: 'Maldives',
     place: 'Raa Atoll',
     price: 3000,
@@ -24,7 +22,6 @@ export const listings: Listing[] = [
       'https://a0.muscache.com/im/pictures/e24c13b9-dd2a-4e15-9845-dd588a884e39.jpg?im_w=720',
   },
   {
-    id: '002',
     country: 'Greece',
     place: 'Louta',
     price: 3500,
@@ -36,7 +33,6 @@ export const listings: Listing[] = [
       'https://a0.muscache.com/im/pictures/4e617803-3384-43d1-a9cc-5fb1255e826a.jpg?im_w=720',
   },
   {
-    id: '003',
     country: 'India',
     place: 'Jaisamand',
     price: 2000,

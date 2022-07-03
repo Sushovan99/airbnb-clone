@@ -1,4 +1,14 @@
-const date = new Date();
+import { PrismaClient } from '@prisma/client';
+import { listings } from './listings';
 
-const dateString = date.toString();
-console.log(dateString);
+const db = new PrismaClient();
+
+const seedListings = async () => {
+  console.log('[seed]: Start...');
+  await db.listings.createMany({
+    data: listings,
+  });
+  console.log('[seed]: End...');
+};
+
+seedListings();
