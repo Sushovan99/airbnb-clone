@@ -1,5 +1,6 @@
-import { listings } from '../listings';
+import { Listings } from '@prisma/client';
 import { GraphQLScalarType } from 'graphql';
+import { DBType } from '../lib';
 
 export const resolvers = {
   Date: new GraphQLScalarType({
@@ -9,21 +10,36 @@ export const resolvers = {
   }),
 
   Query: {
-    listings: () => listings,
+    listings: async (
+      _parent: unknown,
+      _args: unknown,
+      { db }: DBType
+    ): Promise<Listings[]> => {
+      const listings = await db.listings.findMany();
+      if (!listings.length) {
+        throw new Error('No listings found');
+      }
+      return listings;
+    },
   },
 
   Mutation: {
-    deleteListing: (
+    deleteListing: async (
       _parent: unknown,
       { id }: { id: string },
-      _context: unknown
-    ) => {
-      const findIndex = listings.findIndex((listing) => listing.id === id);
-      if (findIndex === -1) {
-        throw new Error('Listing not found');
+      { db }: DBType
+    ): Promise<Listings> => {
+      const deletedListing = await db.listings.delete({
+        where: {
+          id,
+        },
+      });
+
+      if (!deletedListing) {
+        throw new Error('Cannot delete Listing');
       }
-      const [deleteResult] = listings.splice(findIndex, 1);
-      return deleteResult;
+
+      return deletedListing;
     },
   },
 };

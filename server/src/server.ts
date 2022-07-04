@@ -2,11 +2,18 @@ require('dotenv').config();
 
 import express, { Application } from 'express';
 import { ApolloServer } from 'apollo-server-express';
+import { PrismaClient } from '@prisma/client';
 import { typeDefs, resolvers } from './graphql';
+
+const db = new PrismaClient();
 
 const mount = async (app: Application) => {
   const PORT: string | undefined = process.env.PORT;
-  const server = new ApolloServer({ typeDefs, resolvers });
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    context: () => ({ db }),
+  });
   await server.start();
   server.applyMiddleware({ app, path: '/api' });
 
