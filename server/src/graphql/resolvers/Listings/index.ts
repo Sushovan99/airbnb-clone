@@ -1,8 +1,8 @@
 import { Listings } from '@prisma/client';
 import { GraphQLScalarType } from 'graphql';
-import { DBType } from '../lib';
+import { DBType } from '../../../lib';
 
-export const resolvers = {
+export const ListingsResolvers = {
   Date: new GraphQLScalarType({
     name: 'Date',
     description: 'A valid date value',

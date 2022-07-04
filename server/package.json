@@ -4,6 +4,7 @@
   "description": "Backend for our Airbnb-Clone app.",
   "scripts": {
     "start": "nodemon src/server.ts",
+    "build": "tsc --project ./",
     "seed": "nodemon src/seed.ts"
   },
   "author": "Sushovan Biswas",
@@ -23,6 +24,7 @@
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "graphql": "^16.5.0",
+    "lodash.merge": "^4.6.2",
     "prisma": "^4.0.0"
   }
 }
