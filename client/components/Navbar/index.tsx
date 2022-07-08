@@ -49,7 +49,13 @@ const MidGroup = () => {
         <Button>Any week</Button>
         <div className={styles.separator}></div>
         <Stack direction="row">
-          <Button sx={{ color: 'var(--text-light)', border: 'none' }}>
+          <Button
+            sx={{
+              color: 'var(--text-light)',
+              border: 'none',
+              fontWeight: 300,
+            }}
+          >
             Add guests
           </Button>
           <IconButton aria-label="search">
@@ -122,6 +128,9 @@ export const Navbar = () => {
         width: '100vw',
         height: '80px',
         borderBottom: '1px solid var(--border-color)',
+        position: 'fixed',
+        top: '0',
+        zIndex: '8',
       }}
     >
       <nav className={styles.nav}>
