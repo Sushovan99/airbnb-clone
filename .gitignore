@@ -6,6 +6,3 @@ node_modules
 
 # Ignoring temp folder
 temp
-
-# Ignoring .next folder
-.next
