@@ -1,4 +1,3 @@
-import { Button } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
@@ -15,9 +14,6 @@ const Home: NextPage = () => {
         <meta name="author" content="Sushovan Biswas" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <Button variant="contained">Button UI</Button>
-      </main>
     </div>
   );
 };

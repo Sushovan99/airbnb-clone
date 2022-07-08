@@ -20,6 +20,7 @@ a {
   --text-dark: #222222;
   --text-light: #717171;
   --border-color: #dddddd;
+  --btn-variant-1: rgba(196, 189, 189, 0.333);
   --brand-gradient-radial: radial-gradient(
     circle at center,
     #ff385c 0%,

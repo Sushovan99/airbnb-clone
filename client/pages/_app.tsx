@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { theme } from '../theme/theme';
+import { Navbar } from '../components';
 
 import '@fontsource/be-vietnam-pro/300.css';
 import '@fontsource/be-vietnam-pro/400.css';
@@ -14,6 +15,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <ThemeProvider theme={theme}>
         <CssBaseline />
+        <Navbar />
         <Component {...pageProps} />
       </ThemeProvider>
     </>
