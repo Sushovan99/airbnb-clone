@@ -3,8 +3,15 @@ import LanguageIcon from '@mui/icons-material/Language';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import Link from 'next/link';
 import styles from '../../styles/Footer.module.css';
+import { useState } from 'react';
+import { CustomModal } from '../Modal';
+import { ModalContent } from './ModalContent';
 
 export const Footer = () => {
+  const [open, setOpen] = useState<boolean>(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -51,11 +58,23 @@ export const Footer = () => {
               <a>English</a>
             </Link>
           </Button>
-          <Button variant="text" endIcon={<KeyboardArrowUpIcon />}>
+          <Button
+            variant="text"
+            endIcon={<KeyboardArrowUpIcon />}
+            onClick={handleOpen}
+          >
             <Link href="#">
               <a>Support & resources</a>
             </Link>
           </Button>
+          <CustomModal
+            open={open}
+            close={handleClose}
+            width="100vw"
+            direction="up"
+          >
+            <ModalContent close={handleClose} />
+          </CustomModal>
         </Box>
       </div>
     </footer>

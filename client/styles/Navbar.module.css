@@ -2,7 +2,7 @@
   display: grid;
   max-width: 1120px;
   height: 100%;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
   justify-content: space-between;
   margin: 0 auto;

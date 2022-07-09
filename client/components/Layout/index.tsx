@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <Box sx={{ position: 'relative' }}>
+    <Box>
       <Navbar />
       <main>{children}</main>
       <Footer />
