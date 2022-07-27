@@ -1,19 +1,16 @@
 import { Box, Modal, Slide } from '@mui/material';
-
-// import Link from 'next/link';
-// import styles from '../../styles/Modal.module.css';
 type TransitionDirection = 'right' | 'left' | 'up' | 'down';
 
 export const CustomModal = ({
   open,
   close,
-  width,
+  style,
   direction: transistionDirection,
   children,
 }: {
   open: boolean;
   close: Function;
-  width: string;
+  style: Object;
   direction: TransitionDirection;
   children: React.ReactNode;
 }) => {
@@ -25,19 +22,7 @@ export const CustomModal = ({
         mountOnEnter
         unmountOnExit
       >
-        <Box
-          sx={{
-            background: 'white',
-            position: 'absolute',
-            bottom: '0',
-            width,
-            borderTopLeftRadius: '10px',
-            borderTopRightRadius: '10px',
-            outline: 'none',
-          }}
-        >
-          {children}
-        </Box>
+        <Box sx={style}>{children}</Box>
       </Slide>
     </Modal>
   );

@@ -70,8 +70,16 @@ export const Footer = () => {
           <CustomModal
             open={open}
             close={handleClose}
-            width="100vw"
             direction="up"
+            style={{
+              background: 'white',
+              position: 'absolute',
+              bottom: '0',
+              width: '100vw',
+              borderTopLeftRadius: '10px',
+              borderTopRightRadius: '10px',
+              outline: 'none',
+            }}
           >
             <ModalContent close={handleClose} />
           </CustomModal>

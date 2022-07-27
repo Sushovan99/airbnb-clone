@@ -42,5 +42,18 @@ export const theme = createTheme({
         },
       },
     },
+    MuiList: {
+      styleOverrides: {
+        root: {
+          background: 'white',
+          borderRadius: '10px',
+        },
+      },
+    },
+    MuiListItemText: {
+      defaultProps: {
+        disableTypography: true,
+      },
+    },
   },
 });
