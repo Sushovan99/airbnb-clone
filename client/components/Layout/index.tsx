@@ -1,5 +1,5 @@
-import { Navbar } from '../Navbar';
-import { Footer } from '../Footer';
+import { Navbar } from '../../features';
+import { Footer } from '../../features';
 import { Box } from '@mui/material';
 
 export const Layout = ({ children }: { children: React.ReactNode }) => {

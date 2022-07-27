@@ -3,7 +3,7 @@ import { Box, Button, IconButton } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState, useRef, useEffect } from 'react';
-import { CustomList } from '../Lists';
+import { AuthLists } from './Lists';
 
 export const RightGroup = () => {
   const [open, setOpen] = useState(false);
@@ -70,7 +70,7 @@ export const RightGroup = () => {
             marginLeft: '8px',
           }}
         />
-        {open && <CustomList />}
+        {open && <AuthLists />}
       </Button>
     </Box>
   );

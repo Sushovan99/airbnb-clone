@@ -9,7 +9,7 @@ import {
 
 import React from 'react';
 
-export const CustomList = () => {
+export const AuthLists = () => {
   return (
     <Box
       sx={{

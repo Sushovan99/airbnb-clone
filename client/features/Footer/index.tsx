@@ -1,10 +1,9 @@
 import { Box, Button } from '@mui/material';
-import LanguageIcon from '@mui/icons-material/Language';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
+import { Language, KeyboardArrowUp } from '@mui/icons-material';
 import Link from 'next/link';
 import styles from '../../styles/Footer.module.css';
 import { useState } from 'react';
-import { CustomModal } from '../Modal';
+import { CustomModal } from '../../components';
 import { ModalContent } from './ModalContent';
 
 export const Footer = () => {
@@ -53,14 +52,14 @@ export const Footer = () => {
             justifyContent: 'flex-end',
           }}
         >
-          <Button variant="text" startIcon={<LanguageIcon />}>
+          <Button variant="text" startIcon={<Language />}>
             <Link href="#">
               <a>English</a>
             </Link>
           </Button>
           <Button
             variant="text"
-            endIcon={<KeyboardArrowUpIcon />}
+            endIcon={<KeyboardArrowUp />}
             onClick={handleOpen}
           >
             <Link href="#">
