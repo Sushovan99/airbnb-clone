@@ -43,6 +43,16 @@ export const AuthLists = () => {
               <ListItemText primary="Host your home" />
             </ListItemButton>
           </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemText primary="Host an experience" />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemText primary="Help" />
+            </ListItemButton>
+          </ListItem>
         </List>
       </nav>
     </Box>

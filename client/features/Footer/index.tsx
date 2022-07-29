@@ -1,15 +1,17 @@
+import Link from 'next/link';
 import { Box, Button } from '@mui/material';
 import { Language, KeyboardArrowUp } from '@mui/icons-material';
-import Link from 'next/link';
-import styles from '../../styles/Footer.module.css';
-import { useState } from 'react';
 import { CustomModal } from '../../components';
 import { ModalContent } from './ModalContent';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { modalOpen, modalClose } from '@store/feature/footerModal';
+import styles from '@styles/Footer.module.css';
 
 export const Footer = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const dispatch = useAppDispatch();
+  const open = useAppSelector((state) => state.footerModal.isModalOpen);
+  const handleOpen = () => dispatch(modalOpen());
+  const handleClose = () => dispatch(modalClose());
 
   return (
     <footer className={styles.footer}>

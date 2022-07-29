@@ -2,16 +2,20 @@ import { Language, Person } from '@mui/icons-material';
 import { Box, Button, IconButton } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect, useCallback } from 'react';
 import { AuthLists } from './Lists';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { toggle } from '@store/feature/loginModal';
 
 export const RightGroup = () => {
-  const [open, setOpen] = useState(false);
+  const dispatch = useAppDispatch();
+  const open = useAppSelector((state) => state.loginModal.isOpen);
+  const toggleModal = useCallback(() => dispatch(toggle()), [dispatch]);
   const ref = useRef();
   useEffect(() => {
     const checkIfClickedOutside = (e) => {
       if (open && ref.current && !ref.current.contains(e.target)) {
-        setOpen((prevState) => !prevState);
+        toggleModal();
       }
     };
     document.addEventListener('click', checkIfClickedOutside);
@@ -19,7 +23,7 @@ export const RightGroup = () => {
     return () => {
       document.removeEventListener('click', checkIfClickedOutside);
     };
-  }, [open]);
+  }, [open, toggleModal]);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -59,7 +63,7 @@ export const RightGroup = () => {
               'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
           },
         }}
-        onClick={() => setOpen((prevState) => !prevState)}
+        onClick={() => toggleModal()}
       >
         <MenuIcon fontSize="small" />
         <Person
