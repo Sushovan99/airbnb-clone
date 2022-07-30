@@ -3,8 +3,8 @@ import Link from 'next/link';
 import { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 import { ThemeProvider } from '@mui/material/styles';
-import { Footer } from '@features/index';
-import { theme } from '../theme';
+import { Footer } from 'features/index';
+import { theme } from '@utils/theme';
 import { Provider } from 'react-redux';
 import store from '@store/index';
 

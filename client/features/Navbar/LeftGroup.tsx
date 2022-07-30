@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import AirbnbLogo from '../../public/Airbnb.svg';
+import AirbnbLogo from '@public/Airbnb.svg';
 
 export const LeftGroup = () => {
   return (

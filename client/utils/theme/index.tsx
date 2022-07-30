@@ -10,10 +10,15 @@ export const theme = createTheme({
   },
 
   typography: {
-    fontFamily: ['Be Vietnam Pro', 'sans-serif'].join(','),
+    fontFamily: 'Be Vietnam Pro, sans-serif',
   },
 
   components: {
+    MuiTypography: {
+      defaultProps: {
+        fontFamily: 'Be Vietnam Pro',
+      },
+    },
     MuiButton: {
       defaultProps: {
         disableRipple: true,
@@ -53,6 +58,35 @@ export const theme = createTheme({
     MuiListItemText: {
       defaultProps: {
         disableTypography: true,
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          display: 'flex',
+          justifyItems: 'center',
+          width: '100%',
+        },
+      },
+      defaultProps: {
+        TabIndicatorProps: {
+          style: {
+            backgroundColor: '#111',
+            color: '#111',
+          },
+        },
+      },
+    },
+    MuiTab: {
+      defaultProps: {
+        disableRipple: true,
+      },
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          fontSize: '16px',
+          fontWeight: '400',
+        },
       },
     },
   },

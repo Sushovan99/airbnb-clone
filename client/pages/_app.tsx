@@ -1,31 +1,44 @@
+import Head from 'next/head';
 import { NextPage } from 'next';
 import { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { theme } from '../theme';
-import { Layout } from '@components/index';
+import { CacheProvider, EmotionCache } from '@emotion/react';
+import { theme } from '@utils/theme';
+import { Layout } from 'components/index';
 import store from '@store/index';
 import { Provider } from 'react-redux';
+import createEmotionCache from '@utils/emotion/emotionCache';
 
 import '@fontsource/be-vietnam-pro/300.css';
 import '@fontsource/be-vietnam-pro/400.css';
 import '@fontsource/be-vietnam-pro/500.css';
 import '@fontsource/be-vietnam-pro/700.css';
-import '../styles/globals.css';
+import '@styles/globals.css';
+
+const clientSideEmotionCache = createEmotionCache();
+interface MyAppProps extends AppProps {
+  emotionCache?: EmotionCache;
+}
 
 export type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;
 };
 
-type AppPropsWithLayout = AppProps & {
+type AppPropsWithLayout = MyAppProps & {
   Component: NextPageWithLayout;
 };
 
-function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+function MyApp(props: AppPropsWithLayout) {
+  const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
+
   if (Component.getLayout) {
     return Component.getLayout(
       <>
+        <Head>
+          <meta name="viewport" content="initial-scale=1, width=device-width" />
+        </Head>
         <CssBaseline />
         <Component {...pageProps} />
       </>
@@ -33,16 +46,16 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   }
 
   return (
-    <>
-      <Provider store={store}>
+    <Provider store={store}>
+      <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
           <Layout>
             <Component {...pageProps} />
           </Layout>
         </ThemeProvider>
-      </Provider>
-    </>
+      </CacheProvider>
+    </Provider>
   );
 }
 

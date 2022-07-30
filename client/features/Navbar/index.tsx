@@ -1,11 +1,12 @@
-import { Box } from '@mui/material';
+import { FC, useState } from 'react';
+import Box from '@mui/material/Box';
 import { RightGroup } from './RightGroup';
 import { LeftGroup } from './LeftGroup';
 import { MidGroup } from './MidGroup';
+import { FilterTab } from './filterTab';
 import styles from '../../styles/Navbar.module.css';
-import { useState } from 'react';
 
-export const Navbar = () => {
+export const Navbar: FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   return isFilterOpen ? (
     <Box
@@ -20,6 +21,7 @@ export const Navbar = () => {
     >
       <nav className={styles.nav}>
         <LeftGroup />
+        <FilterTab />
         <RightGroup />
       </nav>
     </Box>
