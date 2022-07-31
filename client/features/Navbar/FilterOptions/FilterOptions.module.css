@@ -1,0 +1,22 @@
+.header {
+  font-size: 12px;
+}
+
+.searchLocationInput input[type='text'] {
+  border: none;
+  outline: none;
+  color: var(--text-dark);
+  background-color: inherit;
+  font-weight: bold;
+  width: 100%;
+}
+
+.searchLocationInput input[type='text']:hover {
+  background-color: inherit;
+}
+
+.searchLocationInput input::placeholder {
+  color: var(--text-light-1);
+  font-size: 14px;
+  font-weight: lighter;
+}

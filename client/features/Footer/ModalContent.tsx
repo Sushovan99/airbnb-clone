@@ -8,6 +8,10 @@ interface Content {
   links: string[];
 }
 
+interface ModalContentProps {
+  close: Function;
+}
+
 const content: Content[] = [
   {
     title: 'Support',
@@ -76,7 +80,9 @@ const RenderLinks = ({ title, links }: Content) => {
   );
 };
 
-export const ModalContent = ({ close }: { close: Function }) => {
+export const ModalContent: React.FC<ModalContentProps> = ({
+  close,
+}: ModalContentProps) => {
   return (
     <Grid
       container

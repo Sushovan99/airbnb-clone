@@ -1,14 +1,16 @@
+import { FC } from 'react';
 import { Search } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, IconButton, Stack } from '@mui/material';
-import { useState } from 'react';
 
-export const MidGroup = ({
-  setIsFilterOpen,
-  isFilterOpen,
-}: {
+interface Props {
   setIsFilterOpen: Function;
   isFilterOpen: boolean;
-}) => {
+}
+
+export const MidGroup: FC<Props> = ({
+  setIsFilterOpen,
+  isFilterOpen,
+}: Props) => {
   const separator = {
     width: '.8px',
     height: '30px',

@@ -3,8 +3,9 @@ import Box from '@mui/material/Box';
 import { RightGroup } from './RightGroup';
 import { LeftGroup } from './LeftGroup';
 import { MidGroup } from './MidGroup';
-import { FilterTab } from './filterTab';
-import styles from '../../styles/Navbar.module.css';
+import { FilterTab } from './FilterTab';
+import styles from '@styles/Navbar.module.css';
+import { FilterOptions } from './FilterOptions/FilterOptions';
 
 export const Navbar: FC = () => {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -12,7 +13,7 @@ export const Navbar: FC = () => {
     <Box
       sx={{
         width: '100vw',
-        height: '160px',
+        height: 'auto',
         borderBottom: '1px solid var(--border-color)',
         position: 'fixed',
         top: '0',
@@ -24,6 +25,18 @@ export const Navbar: FC = () => {
         <FilterTab />
         <RightGroup />
       </nav>
+      <Box
+        sx={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          height: '100%',
+        }}
+      >
+        <FilterOptions />
+      </Box>
     </Box>
   ) : (
     <Box

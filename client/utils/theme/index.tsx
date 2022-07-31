@@ -89,5 +89,12 @@ export const theme = createTheme({
         },
       },
     },
+    MuiIconButton: {
+      styleOverrides: {
+        root: {
+          '&:hover': { backgroundColor: 'transparent' },
+        },
+      },
+    },
   },
 });
