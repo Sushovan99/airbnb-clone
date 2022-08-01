@@ -1,13 +1,14 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import { Button, Box, Typography, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
-import SearchIcon from '@mui/icons-material/Search';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
-import { toggleGuest } from '@store/feature/filterOptions';
-import styles from '../FilterOptions.module.css';
+import { toggleCheckIn } from '@store/feature/filterOptions';
+import styles from '../../FilterOptions.module.css';
 
-export const AddGuestFilter: React.FC = () => {
+export const CheckInFilter: React.FC = () => {
   const dispatch = useAppDispatch();
-  const isActive = useAppSelector((state) => state.filterSearch.who.isActive);
+  const isCheckInFilterActive = useAppSelector(
+    (state) => state.filterSearch.checkIn.isActive
+  );
 
   return (
     <Button
@@ -17,32 +18,32 @@ export const AddGuestFilter: React.FC = () => {
         alignItems: 'center',
         borderRadius: '50px',
         paddingLeft: '20px',
-        paddingRight: '8px',
         height: '100%',
         textAlign: 'left',
-        boxShadow: isActive ? 'var(--filter-box-shadow)' : 'none',
+        boxShadow: isCheckInFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {
-          background: isActive ? 'none' : 'var(--border-color)',
+          background: isCheckInFilterActive ? 'none' : 'var(--border-color)',
         },
       }}
-      onClick={() => dispatch(toggleGuest())}
+      onClick={() => dispatch(toggleCheckIn())}
     >
       <Box
         sx={{
           display: 'flex',
-          flexDirection: 'column',
           flex: 1,
+          flexDirection: 'column',
           gap: '3px',
         }}
       >
-        <h4 className={styles.header}>Who</h4>
+        <h4 className={styles.header}>Check in</h4>
         <Typography
           variant="body1"
           sx={{ fontSize: '12px', color: 'var( --text-light-1)' }}
         >
-          Add Guests
+          Add dates
         </Typography>
       </Box>
+
       <IconButton
         aria-label="clear-input"
         sx={{
@@ -65,23 +66,6 @@ export const AddGuestFilter: React.FC = () => {
           }}
         />
       </IconButton>
-      <Button
-        variant="contained"
-        startIcon={<SearchIcon />}
-        sx={{
-          color: 'white',
-          width: 'auto',
-          height: 'auto',
-          padding: ' 10px 20px',
-          borderRadius: '50px',
-          fontSize: '15px',
-          '&:hover': {
-            backgroundColor: 'var(--brand-color)',
-          },
-        }}
-      >
-        Search
-      </Button>
     </Button>
   );
 };

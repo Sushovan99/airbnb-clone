@@ -12,20 +12,6 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content={theme.palette.primary.main} />
           <meta name="emotion-insertion-point" content="" />
           {(this.props as any).emotionStyleTags}
-          <link
-            rel="preload"
-            href="/fonts/be-vietnam-pro-latin-700-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/be-vietnam-pro-latin-500-normal.woff2"
-            as="font"
-            type="font/woff2"
-            crossOrigin="anonymous"
-          />
         </Head>
         <body>
           <Main />
