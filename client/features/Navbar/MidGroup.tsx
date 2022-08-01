@@ -1,6 +1,15 @@
 import { FC } from 'react';
 import { Search } from '@mui/icons-material';
-import { Box, Button, ButtonGroup, IconButton, Stack } from '@mui/material';
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  IconButton,
+  Stack,
+  Divider,
+} from '@mui/material';
+import { useAppDispatch } from '@store/hooks';
+import { selectSearchFilter } from '@store/feature/filterOptions';
 
 interface Props {
   setIsFilterOpen: Function;
@@ -11,11 +20,7 @@ export const MidGroup: FC<Props> = ({
   setIsFilterOpen,
   isFilterOpen,
 }: Props) => {
-  const separator = {
-    width: '.8px',
-    height: '30px',
-    background: 'var(--border-color)',
-  };
+  const dispatch = useAppDispatch();
 
   return (
     <Box>
@@ -42,10 +47,14 @@ export const MidGroup: FC<Props> = ({
             },
           }}
         >
-          <Button>Anywhere</Button>
-          <div style={separator}></div>
-          <Button>Any week</Button>
-          <div style={separator}></div>
+          <Button onClick={() => dispatch(selectSearchFilter('where'))}>
+            Anywhere
+          </Button>
+          <Divider variant="middle" orientation="vertical" flexItem />
+          <Button onClick={() => dispatch(selectSearchFilter('check in'))}>
+            Any week
+          </Button>
+          <Divider variant="middle" orientation="vertical" flexItem />
           <Stack direction="row">
             <Button
               sx={{
@@ -53,6 +62,7 @@ export const MidGroup: FC<Props> = ({
                 border: 'none',
                 fontWeight: 300,
               }}
+              onClick={() => dispatch(selectSearchFilter('who'))}
             >
               Add guests
             </Button>

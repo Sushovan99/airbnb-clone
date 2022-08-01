@@ -3,6 +3,7 @@ import footerModalReducer from './feature/footerModal';
 import loginModalReducre from './feature/loginModal';
 import filterModalReducer from './feature/filterModal';
 import filterTabReducer from './feature/filterTab';
+import filterOptionReducer from './feature/filterOptions';
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     loginModal: loginModalReducre,
     filterModal: filterModalReducer,
     filterTab: filterTabReducer,
+    filterSearch: filterOptionReducer,
   },
 });
 
