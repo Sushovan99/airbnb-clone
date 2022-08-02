@@ -20,9 +20,10 @@ export const CheckOutFilter: React.FC = () => {
         paddingY: '10px',
         height: '100%',
         textAlign: 'left',
+        background: isCheckOutFilterActive ? 'white' : 'none',
         boxShadow: isCheckOutFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {
-          background: isCheckOutFilterActive ? 'none' : 'var(--border-color)',
+          background: !isCheckOutFilterActive ? 'var(--border-color)' : 'white',
         },
       }}
       onClick={() => dispatch(toggleCheckout())}
@@ -43,19 +44,7 @@ export const CheckOutFilter: React.FC = () => {
           Add dates
         </Typography>
       </Box>
-      <IconButton
-        aria-label="clear-input"
-        sx={{
-          height: 'auto',
-          width: 'auto',
-          padding: 0,
-          marginRight: '8px',
-          background: 'var(--background-1)',
-          '&:hover': {
-            background: 'var(--btn-variant-2)',
-          },
-        }}
-      >
+      <div role="button" aria-label="clear-input" className={styles.iconBtn}>
         <CloseIcon
           style={{
             fontSize: '24px',
@@ -64,7 +53,7 @@ export const CheckOutFilter: React.FC = () => {
             borderRadius: '50%',
           }}
         />
-      </IconButton>
+      </div>
     </Button>
   );
 };

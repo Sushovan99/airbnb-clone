@@ -20,9 +20,10 @@ export const CheckInFilter: React.FC = () => {
         paddingLeft: '20px',
         height: '100%',
         textAlign: 'left',
+        background: isCheckInFilterActive ? 'white' : 'none',
         boxShadow: isCheckInFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {
-          background: isCheckInFilterActive ? 'none' : 'var(--border-color)',
+          background: !isCheckInFilterActive ? 'var(--border-color)' : 'white',
         },
       }}
       onClick={() => dispatch(toggleCheckIn())}
@@ -44,19 +45,7 @@ export const CheckInFilter: React.FC = () => {
         </Typography>
       </Box>
 
-      <IconButton
-        aria-label="clear-input"
-        sx={{
-          height: 'auto',
-          width: 'auto',
-          padding: 0,
-          marginRight: '8px',
-          background: 'var(--background-1)',
-          '&:hover': {
-            background: 'var(--btn-variant-2)',
-          },
-        }}
-      >
+      <div role="button" aria-label="clear-input" className={styles.iconBtn}>
         <CloseIcon
           style={{
             fontSize: '24px',
@@ -65,7 +54,7 @@ export const CheckInFilter: React.FC = () => {
             borderRadius: '50%',
           }}
         />
-      </IconButton>
+      </div>
     </Button>
   );
 };

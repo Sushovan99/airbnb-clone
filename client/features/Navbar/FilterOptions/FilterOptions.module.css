@@ -21,22 +21,33 @@
   font-weight: lighter;
 }
 
-.locationSearchBtn {
+.iconBtn {
+  height: auto;
+  width: auto;
+  padding: 0;
+  margin-right: 8px;
+  background: var(--background-1);
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-radius: 50px;
-  padding: 10px 0;
-  padding-left: 30px;
-  height: 100%;
-  text-align: left;
+  border-radius: 50%;
   cursor: pointer;
 }
 
-.boxShadow {
-  box-shadow: var(--filter-box-shadow);
+.iconBtn:hover {
+  background: var(--btn-variant-2);
 }
 
-.removeShadow {
+.searchBtn {
+  color: white;
+  width: auto;
+  height: auto;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-size: 15px;
   box-shadow: none;
+  background-color: var(--brand-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }

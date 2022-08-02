@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
@@ -7,7 +7,9 @@ import styles from '../FilterOptions.module.css';
 
 export const AddGuestFilter: React.FC = () => {
   const dispatch = useAppDispatch();
-  const isActive = useAppSelector((state) => state.filterSearch.who.isActive);
+  const isGuestFilterActive = useAppSelector(
+    (state) => state.filterSearch.who.isActive
+  );
 
   return (
     <Button
@@ -20,9 +22,10 @@ export const AddGuestFilter: React.FC = () => {
         paddingRight: '8px',
         height: '100%',
         textAlign: 'left',
-        boxShadow: isActive ? 'var(--filter-box-shadow)' : 'none',
+        background: isGuestFilterActive ? 'white' : 'none',
+        boxShadow: isGuestFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {
-          background: isActive ? 'none' : 'var(--border-color)',
+          background: !isGuestFilterActive ? 'var(--border-color)' : 'white',
         },
       }}
       onClick={() => dispatch(toggleGuest())}
@@ -43,19 +46,7 @@ export const AddGuestFilter: React.FC = () => {
           Add Guests
         </Typography>
       </Box>
-      <IconButton
-        aria-label="clear-input"
-        sx={{
-          height: 'auto',
-          width: 'auto',
-          padding: 0,
-          marginRight: '8px',
-          background: 'var(--background-1)',
-          '&:hover': {
-            background: 'var(--btn-variant-2)',
-          },
-        }}
-      >
+      <div role="button" aria-label="clear-input" className={styles.iconBtn}>
         <CloseIcon
           style={{
             fontSize: '24px',
@@ -64,24 +55,11 @@ export const AddGuestFilter: React.FC = () => {
             borderRadius: '50%',
           }}
         />
-      </IconButton>
-      <Button
-        variant="contained"
-        startIcon={<SearchIcon />}
-        sx={{
-          color: 'white',
-          width: 'auto',
-          height: 'auto',
-          padding: ' 10px 20px',
-          borderRadius: '50px',
-          fontSize: '15px',
-          '&:hover': {
-            backgroundColor: 'var(--brand-color)',
-          },
-        }}
-      >
-        Search
-      </Button>
+      </div>
+      <div role="button" className={styles.searchBtn}>
+        <SearchIcon />
+        <p>Search</p>
+      </div>
     </Button>
   );
 };
