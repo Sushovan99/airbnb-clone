@@ -12,6 +12,7 @@ export const LocationFilter: React.FC = () => {
   );
 
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
+
   const handleLocationSearchBtn = (): void => {
     inputRef.current.focus();
   };
@@ -30,8 +31,10 @@ export const LocationFilter: React.FC = () => {
         paddingLeft: '30px',
         paddingY: '10px',
         height: '100%',
+        marginRight: '2px',
         textAlign: 'left',
         background: isLocationFilterActive ? 'white' : 'none',
+        transform: 'scale(1.02, 1.03)',
         boxShadow: isLocationFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {
           background: !isLocationFilterActive ? 'var(--border-color)' : 'white',

@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { Search } from '@mui/icons-material';
+import SearchIcon from '@mui/icons-material/Search';
 import {
   Box,
   Button,
@@ -67,7 +67,7 @@ export const MidGroup: FC<Props> = ({
               Add guests
             </Button>
             <IconButton aria-label="search">
-              <Search
+              <SearchIcon
                 fontSize="medium"
                 sx={{
                   backgroundColor: 'primary.main',

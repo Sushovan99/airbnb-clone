@@ -28,7 +28,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "features/Navbar/RightGroup.jsx"
+    "features/Navbar/RightGroup.tsx"
   ],
   "exclude": ["node_modules"]
 }

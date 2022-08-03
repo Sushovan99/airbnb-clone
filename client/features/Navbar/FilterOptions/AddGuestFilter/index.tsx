@@ -22,6 +22,8 @@ export const AddGuestFilter: React.FC = () => {
         paddingRight: '8px',
         height: '100%',
         textAlign: 'left',
+        transform: 'scale(1.02, 1.03)',
+        marginLeft: '2px',
         background: isGuestFilterActive ? 'white' : 'none',
         boxShadow: isGuestFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {

@@ -1,4 +1,4 @@
-import { Button, Box, Typography, IconButton } from '@mui/material';
+import { Button, Box, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { toggleCheckIn } from '@store/feature/filterOptions';
@@ -20,6 +20,7 @@ export const CheckInFilter: React.FC = () => {
         paddingLeft: '20px',
         height: '100%',
         textAlign: 'left',
+        transform: 'scaleY(1.03)',
         background: isCheckInFilterActive ? 'white' : 'none',
         boxShadow: isCheckInFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {

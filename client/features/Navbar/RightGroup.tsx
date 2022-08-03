@@ -2,20 +2,19 @@ import { Language, Person } from '@mui/icons-material';
 import { Box, Button, IconButton } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MenuIcon from '@mui/icons-material/Menu';
-import { useRef, useEffect, useCallback } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { AuthLists } from './Lists';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { toggle } from '@store/feature/loginModal';
 
-export const RightGroup = () => {
+export const RightGroup: React.FC = () => {
   const dispatch = useAppDispatch();
   const open = useAppSelector((state) => state.loginModal.isOpen);
-  const toggleModal = useCallback(() => dispatch(toggle()), [dispatch]);
-  const ref = useRef();
+  const buttonRef = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    const checkIfClickedOutside = (e) => {
-      if (open && ref.current && !ref.current.contains(e.target)) {
-        toggleModal();
+    const checkIfClickedOutside = (e: any) => {
+      if (open && buttonRef.current && !buttonRef.current.contains(e.target)) {
+        dispatch(toggle());
       }
     };
     document.addEventListener('click', checkIfClickedOutside);
@@ -23,7 +22,7 @@ export const RightGroup = () => {
     return () => {
       document.removeEventListener('click', checkIfClickedOutside);
     };
-  }, [open, toggleModal]);
+  }, [open, dispatch]);
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
@@ -45,7 +44,7 @@ export const RightGroup = () => {
         <Language fontSize="small" />
       </IconButton>
       <Button
-        ref={ref}
+        ref={buttonRef}
         sx={{
           borderRadius: '20px',
           border: '1px solid var(--border-color)',
@@ -63,7 +62,7 @@ export const RightGroup = () => {
               'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
           },
         }}
-        onClick={() => toggleModal()}
+        onClick={() => dispatch(toggle())}
       >
         <MenuIcon fontSize="small" />
         <Person

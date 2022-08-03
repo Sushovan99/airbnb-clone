@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 interface FilterOptionState {
   filterOptions: 'where' | 'check in' | 'who' | '';
+  resetStateRan: boolean;
   where: {
     isActive: boolean;
   };
@@ -18,6 +19,7 @@ interface FilterOptionState {
 
 const initialState: FilterOptionState = {
   filterOptions: '',
+  resetStateRan: false,
   where: {
     isActive: false,
   },
@@ -40,6 +42,7 @@ const filterOptionSlice = createSlice({
   reducers: {
     selectSearchFilter(state, action) {
       state.filterOptions = action.payload;
+
       if (state.filterOptions === 'where') {
         state.where.isActive = true;
       }
@@ -52,12 +55,14 @@ const filterOptionSlice = createSlice({
         state.who.isActive = true;
       }
     },
+
     toggleLocation(state) {
       state.where.isActive = true;
       state.checkIn.isActive = false;
       state.checkOut.isActive = false;
       state.who.isActive = false;
     },
+
     toggleCheckout(state) {
       state.checkOut.isActive = !state.checkOut.isActive;
       state.checkIn.isActive = false;
@@ -78,6 +83,13 @@ const filterOptionSlice = createSlice({
       state.checkOut.isActive = false;
       state.where.isActive = false;
     },
+
+    resetFilterState(state) {
+      state.where.isActive = false;
+      state.checkIn.isActive = false;
+      state.checkOut.isActive = false;
+      state.who.isActive = false;
+    },
   },
 });
 
@@ -87,6 +99,7 @@ export const {
   toggleCheckout,
   toggleGuest,
   toggleLocation,
+  resetFilterState,
 } = filterOptionSlice.actions;
 
 export default filterOptionSlice.reducer;

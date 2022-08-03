@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography } from '@mui/material';
+import { Box, Button, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { toggleCheckout } from '@store/feature/filterOptions';
@@ -20,6 +20,7 @@ export const CheckOutFilter: React.FC = () => {
         paddingY: '10px',
         height: '100%',
         textAlign: 'left',
+        transform: 'scaleY(1.03)',
         background: isCheckOutFilterActive ? 'white' : 'none',
         boxShadow: isCheckOutFilterActive ? 'var(--filter-box-shadow)' : 'none',
         '&:hover': {
