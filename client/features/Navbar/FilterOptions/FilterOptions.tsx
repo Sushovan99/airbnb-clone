@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { Box, Divider } from '@mui/material';
 import { CheckInFilter, CheckOutFilter } from './DateFilter';
 import { AddGuestFilter } from './AddGuestFilter';
 import { LocationFilter } from './LocationFilter';
-import { useAppSelector } from '@store/hooks';
+import { useAppSelector, useAppDispatch } from '@store/hooks';
+import { resetFilterState } from '@store/feature/filterOptions';
+import { CheckOutsideClickHook } from '@utils/hooks/checkOutsideClick';
 
 export const FilterOptions: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const isCheckInFilterActive = useAppSelector(
     (state) => state.filterSearch.checkIn.isActive
   );
@@ -22,8 +26,23 @@ export const FilterOptions: React.FC = () => {
     (state) => state.filterSearch.who.isActive
   );
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const clickOutsideHandler = (e: any) => {
+    if (containerRef.current && !containerRef.current?.contains(e.target)) {
+      dispatch(resetFilterState());
+    }
+  };
+
+  CheckOutsideClickHook({
+    ref: containerRef,
+    handler: clickOutsideHandler,
+    deps: [dispatch],
+  });
+
   return (
     <Box
+      ref={containerRef}
       sx={{
         width: '100%',
         display: 'grid',

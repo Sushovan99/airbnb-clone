@@ -7,7 +7,7 @@ import styles from '../FilterOptions.module.css';
 
 export const LocationFilter: React.FC = () => {
   const dispatch = useAppDispatch();
-  const isLocationFilterActive: boolean = useAppSelector(
+  const isLocationFilterActive = useAppSelector(
     (state) => state.filterSearch.where.isActive
   );
 

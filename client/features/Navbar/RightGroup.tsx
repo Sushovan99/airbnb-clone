@@ -6,23 +6,23 @@ import React, { useRef, useEffect } from 'react';
 import { AuthLists } from './Lists';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { toggle } from '@store/feature/loginModal';
+import { CheckOutsideClickHook } from '@utils/hooks/checkOutsideClick';
 
 export const RightGroup: React.FC = () => {
   const dispatch = useAppDispatch();
   const open = useAppSelector((state) => state.loginModal.isOpen);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  useEffect(() => {
-    const checkIfClickedOutside = (e: any) => {
-      if (open && buttonRef.current && !buttonRef.current.contains(e.target)) {
-        dispatch(toggle());
-      }
-    };
-    document.addEventListener('click', checkIfClickedOutside);
+  const handlerFunction = (e: any) => {
+    if (open && buttonRef.current && !buttonRef.current.contains(e.target)) {
+      dispatch(toggle());
+    }
+  };
 
-    return () => {
-      document.removeEventListener('click', checkIfClickedOutside);
-    };
-  }, [open, dispatch]);
+  CheckOutsideClickHook<HTMLButtonElement>({
+    ref: buttonRef,
+    handler: handlerFunction,
+    deps: [open, dispatch],
+  });
 
   return (
     <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
