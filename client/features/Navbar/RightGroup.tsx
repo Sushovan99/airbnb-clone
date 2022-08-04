@@ -2,7 +2,7 @@ import { Language, Person } from '@mui/icons-material';
 import { Box, Button, IconButton } from '@mui/material';
 import { grey } from '@mui/material/colors';
 import MenuIcon from '@mui/icons-material/Menu';
-import React, { useRef, useEffect } from 'react';
+import React, { useRef } from 'react';
 import { AuthLists } from './Lists';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { toggle } from '@store/feature/loginModal';
@@ -18,7 +18,7 @@ export const RightGroup: React.FC = () => {
     }
   };
 
-  CheckOutsideClickHook<HTMLButtonElement>({
+  CheckOutsideClickHook<HTMLButtonElement, [boolean, Function]>({
     ref: buttonRef,
     handler: handlerFunction,
     deps: [open, dispatch],

@@ -9,7 +9,7 @@ import {
 
 import React from 'react';
 
-export const AuthLists = () => {
+export const AuthLists: React.FC = () => {
   return (
     <Box
       sx={{

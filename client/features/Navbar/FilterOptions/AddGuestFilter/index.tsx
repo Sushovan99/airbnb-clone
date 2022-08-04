@@ -11,6 +11,10 @@ export const AddGuestFilter: React.FC = () => {
     (state) => state.filterSearch.who.isActive
   );
 
+  const isResetStateRan = useAppSelector(
+    (state) => state.filterSearch.resetStateRan
+  );
+
   return (
     <Button
       sx={{
@@ -29,6 +33,7 @@ export const AddGuestFilter: React.FC = () => {
         '&:hover': {
           background: !isGuestFilterActive ? 'var(--border-color)' : 'white',
         },
+        position: 'relative',
       }}
       onClick={() => dispatch(toggleGuest())}
     >
@@ -58,9 +63,16 @@ export const AddGuestFilter: React.FC = () => {
           }}
         />
       </div>
-      <div role="button" className={styles.searchBtn}>
+      <div
+        role="button"
+        className={styles.searchBtn}
+        style={{
+          padding: isResetStateRan ? '10px' : '10px 15px',
+          transition: 'padding ease 0.4s ',
+        }}
+      >
         <SearchIcon />
-        <p>Search</p>
+        {isResetStateRan ? null : <p>Search</p>}
       </div>
     </Button>
   );

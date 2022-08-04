@@ -61,6 +61,7 @@ const filterOptionSlice = createSlice({
       state.checkIn.isActive = false;
       state.checkOut.isActive = false;
       state.who.isActive = false;
+      state.resetStateRan = false;
     },
 
     toggleCheckout(state) {
@@ -68,6 +69,7 @@ const filterOptionSlice = createSlice({
       state.checkIn.isActive = false;
       state.who.isActive = false;
       state.where.isActive = false;
+      state.resetStateRan = false;
     },
 
     toggleCheckIn(state) {
@@ -75,6 +77,7 @@ const filterOptionSlice = createSlice({
       state.checkOut.isActive = false;
       state.who.isActive = false;
       state.where.isActive = false;
+      state.resetStateRan = false;
     },
 
     toggleGuest(state) {
@@ -82,6 +85,7 @@ const filterOptionSlice = createSlice({
       state.checkIn.isActive = false;
       state.checkOut.isActive = false;
       state.where.isActive = false;
+      state.resetStateRan = false;
     },
 
     resetFilterState(state) {
@@ -89,6 +93,7 @@ const filterOptionSlice = createSlice({
       state.checkIn.isActive = false;
       state.checkOut.isActive = false;
       state.who.isActive = false;
+      state.resetStateRan = true;
     },
   },
 });

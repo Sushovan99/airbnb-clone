@@ -1,12 +1,14 @@
 import React, { EventHandler, useEffect } from 'react';
 
-interface PropType<RefType> {
+interface PropType<RefType, DepsType> {
   handler: EventHandler<any>;
   ref: React.RefObject<RefType>;
-  deps: any[];
+  deps?: DepsType[];
 }
 
-export function CheckOutsideClickHook<RefType>(props: PropType<RefType>) {
+export function CheckOutsideClickHook<RefType, DepsType>(
+  props: PropType<RefType, DepsType>
+) {
   useEffect(() => {
     document.addEventListener('mousedown', props.handler);
     return () => {

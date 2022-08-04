@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { Box, Divider } from '@mui/material';
 import { CheckInFilter, CheckOutFilter } from './DateFilter';
 import { AddGuestFilter } from './AddGuestFilter';
 import { LocationFilter } from './LocationFilter';
+import { GuestFilterDialog } from './AddGuestFilter/GuestFilterDialog';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { resetFilterState } from '@store/feature/filterOptions';
 import { CheckOutsideClickHook } from '@utils/hooks/checkOutsideClick';
@@ -34,7 +35,7 @@ export const FilterOptions: React.FC = () => {
     }
   };
 
-  CheckOutsideClickHook({
+  CheckOutsideClickHook<HTMLDivElement, Function>({
     ref: containerRef,
     handler: clickOutsideHandler,
     deps: [dispatch],
@@ -82,6 +83,7 @@ export const FilterOptions: React.FC = () => {
         }}
       />
       <AddGuestFilter />
+      <GuestFilterDialog />
     </Box>
   );
 };

@@ -96,5 +96,19 @@ export const theme = createTheme({
         },
       },
     },
+    MuiDialog: {
+      defaultProps: {
+        hideBackdrop: true,
+        transitionDuration: 0,
+      },
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          boxShadow: 'none',
+          border: '1px solid var(--border-color)',
+        },
+      },
+    },
   },
 });
