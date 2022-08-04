@@ -1,26 +1,29 @@
 import * as React from 'react';
-import { Box, Divider, IconButton, Typography } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
+import { Box, Divider, Typography } from '@mui/material';
 import { CustomDialog } from '@components/Dialog';
+import { AddRemoveButtons } from './AddRemoveButton';
 
 interface IContentText {
   heading: string;
   sub: string;
+  divider?: boolean;
 }
 
 const contentText: IContentText[] = [
   {
     heading: 'Adult',
     sub: 'Ages 13 or above',
+    divider: true,
   },
   {
     heading: 'Children',
     sub: 'Ages 2–12',
+    divider: true,
   },
   {
     heading: 'Infant',
     sub: 'Under 2',
+    divider: true,
   },
   {
     heading: 'Pets',
@@ -53,137 +56,33 @@ export const GuestFilterDialog: React.FC = () => {
           padding: '30px 40px',
         }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Box>
-            <Typography variant="subtitle1" fontWeight="500">
-              Adults
-            </Typography>
-            <Typography
-              variant="body2"
-              fontWeight="300"
-              sx={{ color: 'var(--filter-sub-text)' }}
-            >
-              Ages 13 or above
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <IconButton
-              aria-label="remove"
+        {contentText.map((item) => (
+          <React.Fragment key={item.heading}>
+            <Box
               sx={{
-                color: 'var(--filter-sub-text)',
-                border: '1px solid var(--filter-sub-text)',
-
-                padding: '5px',
-                '&:hover': {
-                  color: 'var(--text-dark)',
-                  border: '1px solid var(--text-dark)',
-                },
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}
             >
-              <RemoveIcon sx={{ fontSize: '20px' }} />
-            </IconButton>
-            <Typography
-              variant="body2"
-              fontWeight="500"
-              color="var(--text-dark)"
-            >
-              0
-            </Typography>
-            <IconButton
-              aria-label="add"
-              sx={{
-                color: 'var(--filter-sub-text)',
-                padding: '5px',
+              <Box>
+                <Typography variant="subtitle1" fontWeight="500">
+                  {item.heading}
+                </Typography>
+                <Typography
+                  variant="body2"
+                  fontWeight="300"
+                  sx={{ color: 'var(--filter-sub-text)' }}
+                >
+                  {item.sub}
+                </Typography>
+              </Box>
+              <AddRemoveButtons />
+            </Box>
 
-                border: '1px solid var(--filter-sub-text)',
-                '&:hover': {
-                  color: 'var(--text-dark)',
-                  border: '1px solid var(--text-dark)',
-                },
-              }}
-            >
-              <AddIcon sx={{ fontSize: '20px' }} />
-            </IconButton>
-          </Box>
-        </Box>
-
-        <Divider sx={{ marginY: '20px' }} />
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Box>
-            <Typography variant="subtitle1" fontWeight="500">
-              Children
-            </Typography>
-            <Typography
-              variant="body2"
-              fontWeight="300"
-              sx={{ color: 'var(--filter-sub-text)' }}
-            >
-              {'Ages 2–12'}
-            </Typography>
-          </Box>
-          <Box>some</Box>
-        </Box>
-
-        <Divider sx={{ marginY: '20px' }} />
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Box>
-            <Typography variant="subtitle1" fontWeight="500">
-              Infant
-            </Typography>
-            <Typography
-              variant="body2"
-              fontWeight="300"
-              sx={{ color: 'var(--filter-sub-text)' }}
-            >
-              Under 2
-            </Typography>
-          </Box>
-          <Box>some</Box>
-        </Box>
-
-        <Divider sx={{ marginY: '20px' }} />
-
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-        >
-          <Box>
-            <Typography variant="subtitle1" fontWeight="500">
-              Pets
-            </Typography>
-            <Typography
-              variant="body2"
-              fontWeight="300"
-              sx={{ color: 'var(--filter-sub-text)' }}
-            >
-              Bringing a service animal?
-            </Typography>
-          </Box>
-          <Box>some</Box>
-        </Box>
+            {item.divider ? <Divider sx={{ marginY: '20px' }} /> : null}
+          </React.Fragment>
+        ))}
       </Box>
     </CustomDialog>
   );

@@ -1,7 +1,7 @@
+import React from 'react';
 import { Box, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import React from 'react';
 
 export const AddRemoveButtons: React.FC = () => {
   return (
@@ -11,7 +11,6 @@ export const AddRemoveButtons: React.FC = () => {
         sx={{
           color: 'var(--filter-sub-text)',
           border: '1px solid var(--filter-sub-text)',
-
           padding: '5px',
           '&:hover': {
             color: 'var(--text-dark)',
