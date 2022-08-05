@@ -48,6 +48,7 @@ export const AddRemoveButtons: React.FC<IAddRemoveButtons> = ({
         }}
         disabled={isDisabled}
         onClick={removeGuest}
+        disableRipple
       >
         <RemoveIcon
           sx={{
@@ -69,6 +70,7 @@ export const AddRemoveButtons: React.FC<IAddRemoveButtons> = ({
             border: '1px solid var(--text-dark)',
           },
         }}
+        disableRipple
         onClick={addGuest}
       >
         <AddIcon sx={{ fontSize: '20px' }} />

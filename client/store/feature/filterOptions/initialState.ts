@@ -15,7 +15,6 @@ interface FilterOptionState {
 
   who: {
     isActive: boolean;
-
     adult: {
       value: number;
     };

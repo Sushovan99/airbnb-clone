@@ -2,7 +2,7 @@ import { Box, Button, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
-import { toggleGuest } from '@store/feature/filterOptions';
+import { toggleGuest, resetGuestFilter } from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
 
 export const AddGuestFilter: React.FC = () => {
@@ -15,6 +15,31 @@ export const AddGuestFilter: React.FC = () => {
     (state) => state.filterSearch.resetStateRan
   );
 
+  const adult = useAppSelector((state) => state.filterSearch.who.adult.value);
+  const children = useAppSelector(
+    (state) => state.filterSearch.who.children.value
+  );
+  const infant = useAppSelector((state) => state.filterSearch.who.infant.value);
+  const pet = useAppSelector((state) => state.filterSearch.who.pets.value);
+
+  const guestStringFunc = (): string | undefined => {
+    let totalGuest = adult + children;
+    if (!totalGuest && !pet && !infant) {
+      return 'Add guests';
+    }
+    const guestString = `${totalGuest} ${
+      totalGuest === 1 ? 'guest' : 'guests'
+    }`;
+    const infantString = `${infant} ${infant === 1 ? 'infant' : 'infants'}`;
+    const petString = `${pet} ${pet === 1 ? 'pet' : 'pets'}`;
+    const fullString = `${totalGuest > 0 ? guestString : ''}${
+      infant > 0 ? infantString.padStart(infantString.length + 2, ', ') : ''
+    }${pet > 0 ? petString.padStart(petString.length + 2, ', ') : ''}`;
+
+    return fullString;
+  };
+
+  const guestString = guestStringFunc();
   return (
     <Button
       sx={{
@@ -47,13 +72,27 @@ export const AddGuestFilter: React.FC = () => {
       >
         <h4 className={styles.header}>Who</h4>
         <Typography
-          variant="body1"
-          sx={{ fontSize: '12px', color: 'var( --text-light-1)' }}
+          variant="h6"
+          sx={{
+            fontSize: '13px',
+            color:
+              guestString?.length !== 10
+                ? 'var( --text-dark)'
+                : 'var(--text-light-1)',
+            fontWeight: guestString?.length === 10 ? 'light' : '',
+          }}
         >
-          Add Guests
+          {isGuestFilterActive && guestString?.length && guestString.length > 10
+            ? `${guestString?.substring(12, 0)}...`
+            : guestString}
         </Typography>
       </Box>
-      <div role="button" aria-label="clear-input" className={styles.iconBtn}>
+      <div
+        role="button"
+        aria-label="clear-input"
+        className={styles.iconBtn}
+        onClick={() => dispatch(resetGuestFilter())}
+      >
         <CloseIcon
           style={{
             fontSize: '24px',

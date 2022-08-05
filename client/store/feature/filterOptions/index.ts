@@ -53,6 +53,7 @@ const filterOptionSlice = createSlice({
       state.resetStateRan = false;
     },
 
+    // Closing all ACTIVE filters
     resetFilterState(state) {
       state.where.isActive = false;
       state.checkIn.isActive = false;
@@ -96,6 +97,15 @@ const filterOptionSlice = createSlice({
         if (state.who.pets.value > 0) state.who.pets.value -= 1;
       }
     },
+
+    // Reseting the values of all guest types (i.e adult, children...)
+    resetGuestFilter(state) {
+      state.who.isActive = !state.who.isActive;
+      state.who.adult.value = 0;
+      state.who.children.value = 0;
+      state.who.infant.value = 0;
+      state.who.pets.value = 0;
+    },
   },
 });
 
@@ -108,6 +118,7 @@ export const {
   resetFilterState,
   addGuest,
   removeGuest,
+  resetGuestFilter,
 } = filterOptionSlice.actions;
 
 export default filterOptionSlice.reducer;
