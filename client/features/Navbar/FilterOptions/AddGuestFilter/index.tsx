@@ -16,22 +16,29 @@ export const AddGuestFilter: React.FC = () => {
   );
 
   const adult = useAppSelector((state) => state.filterSearch.who.adult.value);
+
   const children = useAppSelector(
     (state) => state.filterSearch.who.children.value
   );
+
   const infant = useAppSelector((state) => state.filterSearch.who.infant.value);
+
   const pet = useAppSelector((state) => state.filterSearch.who.pets.value);
 
   const guestStringFunc = (): string | undefined => {
     let totalGuest = adult + children;
+
     if (!totalGuest && !pet && !infant) {
       return 'Add guests';
     }
+
     const guestString = `${totalGuest} ${
       totalGuest === 1 ? 'guest' : 'guests'
     }`;
+
     const infantString = `${infant} ${infant === 1 ? 'infant' : 'infants'}`;
     const petString = `${pet} ${pet === 1 ? 'pet' : 'pets'}`;
+
     const fullString = `${totalGuest > 0 ? guestString : ''}${
       infant > 0 ? infantString.padStart(infantString.length + 2, ', ') : ''
     }${pet > 0 ? petString.padStart(petString.length + 2, ', ') : ''}`;
@@ -40,6 +47,7 @@ export const AddGuestFilter: React.FC = () => {
   };
 
   const guestString = guestStringFunc();
+
   return (
     <Button
       sx={{

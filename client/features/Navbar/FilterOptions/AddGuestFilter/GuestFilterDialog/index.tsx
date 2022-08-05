@@ -35,7 +35,13 @@ export const GuestFilterDialog: React.FC = () => {
       sub: 'Ages 13 or above',
       divider: true,
       value: adultValue,
-      isDisabled: adultValue <= 0 ? true : false,
+      isDisabled:
+        adultValue <= 0 ||
+        (petsValue === 1 && adultValue === 1) ||
+        (infantValue === 1 && adultValue === 1) ||
+        (childrenValue === 1 && adultValue === 1)
+          ? true
+          : false,
     },
     {
       key: 'children',

@@ -39,8 +39,12 @@ export const CheckOutFilter: React.FC = () => {
       >
         <h4 className={styles.header}>Check out</h4>
         <Typography
-          variant="body1"
-          sx={{ fontSize: '12px', color: 'var( --text-light-1)' }}
+          variant="h6"
+          sx={{
+            fontSize: '13px',
+            fontWeight: 'light',
+            color: 'var( --text-light-1)',
+          }}
         >
           Add dates
         </Typography>

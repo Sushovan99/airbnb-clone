@@ -70,13 +70,28 @@ const filterOptionSlice = createSlice({
         state.who.adult.value += 1;
       }
       if (action.payload === 'children') {
-        state.who.children.value += 1;
+        if (state.who.children.value === 0) {
+          state.who.children.value += 1;
+          state.who.adult.value += 1;
+        } else {
+          state.who.children.value += 1;
+        }
       }
       if (action.payload === 'infant') {
-        state.who.infant.value += 1;
+        if (state.who.infant.value === 0) {
+          state.who.infant.value += 1;
+          state.who.adult.value += 1;
+        } else {
+          state.who.infant.value += 1;
+        }
       }
       if (action.payload === 'pets') {
-        state.who.pets.value += 1;
+        if (state.who.pets.value === 0) {
+          state.who.pets.value += 1;
+          state.who.adult.value += 1;
+        } else {
+          state.who.pets.value += 1;
+        }
       }
     },
 
