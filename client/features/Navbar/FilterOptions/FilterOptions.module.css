@@ -16,9 +16,10 @@
 }
 
 .searchLocationInput input::placeholder {
+  font-family: 'Be Vietnam Pro';
   color: var(--text-light-1);
-  font-size: 14px;
-  font-weight: lighter;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 .iconBtn {

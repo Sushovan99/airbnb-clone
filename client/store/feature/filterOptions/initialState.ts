@@ -3,6 +3,7 @@ interface FilterOptionState {
   resetStateRan: boolean;
   where: {
     isActive: boolean;
+    value: string;
   };
 
   checkIn: {
@@ -38,6 +39,7 @@ export const initialState: FilterOptionState = {
   resetStateRan: false,
   where: {
     isActive: false,
+    value: '',
   },
   checkIn: {
     isActive: false,

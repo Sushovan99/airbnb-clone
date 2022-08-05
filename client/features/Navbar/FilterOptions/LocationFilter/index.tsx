@@ -1,11 +1,13 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Box, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
-import { toggleLocation } from '@store/feature/filterOptions';
+import { toggleLocation, updateWhereInput } from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
 
 export const LocationFilter: React.FC = () => {
+  const [inputValue, setInputValue] = useState('');
+
   const dispatch = useAppDispatch();
   const isLocationFilterActive = useAppSelector(
     (state) => state.filterSearch.where.isActive
@@ -14,11 +16,19 @@ export const LocationFilter: React.FC = () => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
   const handleLocationSearchBtn = (): void => {
+    dispatch(toggleLocation());
     inputRef.current.focus();
+  };
+
+  const handleInputChange = (e: any) => {
+    setInputValue(e.target.value);
+    dispatch(updateWhereInput(e.target.value));
   };
 
   const handleClearInputBtn = (): void => {
     inputRef.current.value = '';
+    setInputValue('');
+    dispatch(updateWhereInput(''));
   };
 
   return (
@@ -40,15 +50,17 @@ export const LocationFilter: React.FC = () => {
           background: !isLocationFilterActive ? 'var(--border-color)' : 'white',
         },
       }}
-      onClick={() => dispatch(toggleLocation())}
+      onClick={handleLocationSearchBtn}
     >
-      <Box
-        className={styles.searchLocationInput}
-        onClick={handleLocationSearchBtn}
-        sx={{ flex: 1 }}
-      >
+      <Box className={styles.searchLocationInput} sx={{ flex: 1 }}>
         <h4 className={styles.header}>Where</h4>
-        <input placeholder="Search destinations" type="text" ref={inputRef} />
+        <input
+          placeholder="Search destinations"
+          value={inputValue}
+          type="text"
+          ref={inputRef}
+          onChange={handleInputChange}
+        />
       </Box>
       <div
         role="button"

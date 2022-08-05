@@ -121,6 +121,10 @@ const filterOptionSlice = createSlice({
       state.who.infant.value = 0;
       state.who.pets.value = 0;
     },
+
+    updateWhereInput(state, action: { payload: string }) {
+      state.where.value = action.payload;
+    },
   },
 });
 
@@ -134,6 +138,7 @@ export const {
   addGuest,
   removeGuest,
   resetGuestFilter,
+  updateWhereInput,
 } = filterOptionSlice.actions;
 
 export default filterOptionSlice.reducer;
