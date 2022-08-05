@@ -19,6 +19,7 @@ export const theme = createTheme({
         fontFamily: 'Be Vietnam Pro',
       },
     },
+
     MuiButton: {
       defaultProps: {
         disableRipple: true,
@@ -32,6 +33,7 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiButtonGroup: {
       defaultProps: {
         disableRipple: true,
@@ -47,6 +49,7 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiList: {
       styleOverrides: {
         root: {
@@ -55,11 +58,13 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiListItemText: {
       defaultProps: {
         disableTypography: true,
       },
     },
+
     MuiTabs: {
       styleOverrides: {
         root: {
@@ -77,6 +82,7 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiTab: {
       defaultProps: {
         disableRipple: true,
@@ -89,6 +95,7 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiIconButton: {
       styleOverrides: {
         root: {
@@ -96,12 +103,14 @@ export const theme = createTheme({
         },
       },
     },
+
     MuiDialog: {
       defaultProps: {
         hideBackdrop: true,
         transitionDuration: 0,
       },
     },
+
     MuiPaper: {
       styleOverrides: {
         root: {

@@ -47,6 +47,7 @@ export const FilterOptions: React.FC = () => {
       sx={{
         width: '100%',
         display: 'grid',
+        position: 'relative',
         gridTemplateColumns: '2fr 1px 1fr 1px 1fr 1px 1.8fr',
         border: '1px solid var(--border-color)',
         alignItems: 'center',
