@@ -30,7 +30,7 @@ export const LocationFilter: React.FC = () => {
     setInputValue('');
     dispatch(updateWhereInput(''));
   };
-
+  // Initial commit
   return (
     <Button
       sx={{

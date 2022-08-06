@@ -27,6 +27,10 @@ export const FilterOptions: React.FC = () => {
     (state) => state.filterSearch.who.isActive
   );
 
+  const hasResetRan = useAppSelector(
+    (state) => state.filterSearch.resetStateRan
+  );
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   const clickOutsideHandler = (e: any) => {
@@ -53,7 +57,7 @@ export const FilterOptions: React.FC = () => {
         alignItems: 'center',
         borderRadius: '50px',
         margin: '14px',
-        background: 'var(--background-1)',
+        background: hasResetRan ? 'white' : 'var(--background-1)',
       }}
     >
       <LocationFilter />
