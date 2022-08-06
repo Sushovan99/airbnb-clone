@@ -5,10 +5,12 @@ import { toggleCheckout } from '@store/feature/filterOptions';
 import styles from '../../FilterOptions.module.css';
 
 export const CheckOutFilter: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const isCheckOutFilterActive: boolean = useAppSelector(
     (state) => state.filterSearch.checkOut.isActive
   );
-  const dispatch = useAppDispatch();
+
   return (
     <Button
       sx={{
@@ -49,16 +51,18 @@ export const CheckOutFilter: React.FC = () => {
           Add dates
         </Typography>
       </Box>
-      <div role="button" aria-label="clear-input" className={styles.iconBtn}>
-        <CloseIcon
-          style={{
-            fontSize: '24px',
-            color: 'black',
-            padding: '5px',
-            borderRadius: '50%',
-          }}
-        />
-      </div>
+      {isCheckOutFilterActive ? (
+        <div role="button" aria-label="clear-input" className={styles.iconBtn}>
+          <CloseIcon
+            style={{
+              fontSize: '24px',
+              color: 'black',
+              padding: '5px',
+              borderRadius: '50%',
+            }}
+          />
+        </div>
+      ) : null}
     </Button>
   );
 };

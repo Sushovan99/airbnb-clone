@@ -95,21 +95,27 @@ export const AddGuestFilter: React.FC = () => {
             : guestString}
         </Typography>
       </Box>
-      <div
-        role="button"
-        aria-label="clear-input"
-        className={styles.iconBtn}
-        onClick={() => dispatch(resetGuestFilter())}
-      >
-        <CloseIcon
-          style={{
-            fontSize: '24px',
-            color: 'black',
-            padding: '5px',
-            borderRadius: '50%',
-          }}
-        />
-      </div>
+
+      {isGuestFilterActive &&
+      guestString?.length &&
+      guestString.length !== 10 ? (
+        <div
+          role="button"
+          aria-label="clear-input"
+          className={styles.iconBtn}
+          onClick={() => dispatch(resetGuestFilter())}
+        >
+          <CloseIcon
+            style={{
+              fontSize: '24px',
+              color: 'black',
+              padding: '5px',
+              borderRadius: '50%',
+            }}
+          />
+        </div>
+      ) : null}
+
       <div
         role="button"
         className={styles.searchBtn}

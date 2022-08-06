@@ -6,9 +6,9 @@ import { toggleLocation, updateWhereInput } from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
 
 export const LocationFilter: React.FC = () => {
+  const dispatch = useAppDispatch();
   const inputValue = useAppSelector((state) => state.filterSearch.where.value);
 
-  const dispatch = useAppDispatch();
   const isLocationFilterActive = useAppSelector(
     (state) => state.filterSearch.where.isActive
   );
@@ -66,14 +66,16 @@ export const LocationFilter: React.FC = () => {
         className={styles.iconBtn}
         onClick={handleClearInputBtn}
       >
-        <CloseIcon
-          style={{
-            fontSize: '24px',
-            color: 'black',
-            padding: '5px',
-            borderRadius: '50%',
-          }}
-        />
+        {isLocationFilterActive && inputValue.length > 0 ? (
+          <CloseIcon
+            style={{
+              fontSize: '24px',
+              color: 'black',
+              padding: '5px',
+              borderRadius: '50%',
+            }}
+          />
+        ) : null}
       </div>
     </Button>
   );

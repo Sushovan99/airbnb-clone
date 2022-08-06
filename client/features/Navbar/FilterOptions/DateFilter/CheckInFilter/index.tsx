@@ -49,17 +49,18 @@ export const CheckInFilter: React.FC = () => {
           Add dates
         </Typography>
       </Box>
-
-      <div role="button" aria-label="clear-input" className={styles.iconBtn}>
-        <CloseIcon
-          style={{
-            fontSize: '24px',
-            color: 'black',
-            padding: '5px',
-            borderRadius: '50%',
-          }}
-        />
-      </div>
+      {isCheckInFilterActive ? (
+        <div role="button" aria-label="clear-input" className={styles.iconBtn}>
+          <CloseIcon
+            style={{
+              fontSize: '24px',
+              color: 'black',
+              padding: '5px',
+              borderRadius: '50%',
+            }}
+          />
+        </div>
+      ) : null}
     </Button>
   );
 };
