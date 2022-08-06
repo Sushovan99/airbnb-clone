@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import { Box, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
@@ -6,7 +6,7 @@ import { toggleLocation, updateWhereInput } from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
 
 export const LocationFilter: React.FC = () => {
-  const [inputValue, setInputValue] = useState('');
+  const inputValue = useAppSelector((state) => state.filterSearch.where.value);
 
   const dispatch = useAppDispatch();
   const isLocationFilterActive = useAppSelector(
@@ -21,16 +21,14 @@ export const LocationFilter: React.FC = () => {
   };
 
   const handleInputChange = (e: any) => {
-    setInputValue(e.target.value);
     dispatch(updateWhereInput(e.target.value));
   };
 
   const handleClearInputBtn = (): void => {
     inputRef.current.value = '';
-    setInputValue('');
     dispatch(updateWhereInput(''));
   };
-  // Initial commit
+
   return (
     <Button
       sx={{
