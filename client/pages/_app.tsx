@@ -10,7 +10,7 @@ import { Layout } from 'components/index';
 import store from '@store/index';
 import { Provider } from 'react-redux';
 import createEmotionCache from '@utils/emotion/emotionCache';
-
+// Initial commit
 import '@fontsource/be-vietnam-pro/300.css';
 import '@fontsource/be-vietnam-pro/400.css';
 import '@fontsource/be-vietnam-pro/500.css';
