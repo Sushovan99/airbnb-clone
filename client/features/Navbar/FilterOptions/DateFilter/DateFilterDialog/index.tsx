@@ -1,5 +1,6 @@
-import { Box } from '@mui/material';
+import React from 'react';
 import { CustomDatePicker } from '@components/DatePicker';
+import { Box } from '@mui/material';
 import { useAppSelector } from '@store/hooks';
 
 export const DateFilterDialog: React.FC = () => {
@@ -9,21 +10,18 @@ export const DateFilterDialog: React.FC = () => {
   const isCheckOutActive = useAppSelector(
     (state) => state.filterSearch.checkOut.isActive
   );
-
   return (
     <Box
       sx={{
         display: isCheckInActive || isCheckOutActive ? 'flex' : 'none',
-        flexDirection: 'column',
         justifyContent: 'center',
-        alignItems: 'center',
-        padding: '30px 30px',
+        padding: '30px 40px',
         width: '100%',
+        maxHeight: '100vh',
         position: 'absolute',
         top: 80,
         borderRadius: '30px',
         border: '1px solid var(--border-color)',
-        // overflowY: 'scroll',
       }}
     >
       <CustomDatePicker orientation="horizontal" />

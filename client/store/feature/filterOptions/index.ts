@@ -126,14 +126,12 @@ const filterOptionSlice = createSlice({
       state.where.value = action.payload;
     },
 
-    handleDateChange(
-      state,
-      action: { payload: { checkInDate: string; checkOutDate?: string } }
-    ) {
-      const checkInDate = action.payload.checkInDate;
-      const checkOutDate = action.payload.checkOutDate;
-      state.checkIn.value = checkInDate;
-      state.checkOut.value = checkOutDate ? checkOutDate : '';
+    handleCheckIn(state, action: { payload: string }) {
+      state.checkIn.value = action.payload;
+    },
+
+    handleCheckOut(state, action: { payload: string }) {
+      state.checkOut.value = action.payload;
     },
   },
 });
@@ -149,7 +147,8 @@ export const {
   removeGuest,
   resetGuestFilter,
   updateWhereInput,
-  handleDateChange,
+  handleCheckIn,
+  handleCheckOut,
 } = filterOptionSlice.actions;
 
 export default filterOptionSlice.reducer;

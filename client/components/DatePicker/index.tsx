@@ -1,7 +1,7 @@
 import { StatefulCalendar } from 'baseui/datepicker';
 import { useState } from 'react';
 import { useAppDispatch } from '@store/hooks';
-import { handleDateChange } from '@store/feature/filterOptions';
+import { handleCheckIn, handleCheckOut } from '@store/feature/filterOptions';
 
 interface ICustomDatePicker {
   orientation: 'horizontal' | 'vertical';
@@ -11,25 +11,32 @@ export const CustomDatePicker: React.FC<ICustomDatePicker> = ({
   orientation,
 }: ICustomDatePicker) => {
   const dispatch = useAppDispatch();
-
   const [selectedDate, setSelectedDate] = useState<Date[]>([]);
-  const [checkIn, checkOut] = selectedDate;
-  const checkInStr = checkIn ? checkIn.toDateString().slice(4, 10) : '';
-  const checkOutStr = checkOut ? checkOut.toDateString().slice(4, 10) : '';
 
-  if (selectedDate.length > 1) {
-    dispatch(
-      handleDateChange({ checkOutDate: checkOutStr, checkInDate: checkInStr })
-    );
-  } else {
-    dispatch(handleDateChange({ checkInDate: checkInStr }));
-  }
+  const handleDispatch = () => {
+    const checkIn = selectedDate[0] ? selectedDate[0] : null;
+    const checkOut = selectedDate[1] ? selectedDate[1] : null;
+    if (checkIn) {
+      const checkInStr = checkIn ? checkIn.toDateString().slice(4, 10) : '';
+      dispatch(handleCheckIn(checkInStr));
+    }
+
+    if (checkOut) {
+      const checkOutStr = checkOut ? checkOut.toDateString().slice(4, 10) : '';
+      dispatch(handleCheckOut(checkOutStr));
+    }
+  };
+
+  const onDateChange = (date: Date[]) => {
+    setSelectedDate(date);
+    handleDispatch();
+  };
 
   return (
     <>
       <StatefulCalendar
         onChange={({ date }) =>
-          Array.isArray(date) ? setSelectedDate(date) : date
+          Array.isArray(date) ? onDateChange(date) : date
         }
         density="high"
         minDate={new Date()}
