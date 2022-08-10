@@ -28,7 +28,6 @@ export const theme = createTheme({
         root: {
           color: '#222222',
           textTransform: 'none',
-          minWidth: '0',
           '&:hover': { backgroundColor: 'transparent' },
         },
       },
