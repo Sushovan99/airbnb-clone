@@ -10,7 +10,9 @@ import { Layout } from 'components/index';
 import store from '@store/index';
 import { Provider } from 'react-redux';
 import createEmotionCache from '@utils/emotion/emotionCache';
-// Initial commit
+import { Provider as StyletronProvider } from 'styletron-react';
+import { styletron } from '@utils/styletron';
+
 import '@fontsource/be-vietnam-pro/300.css';
 import '@fontsource/be-vietnam-pro/400.css';
 import '@fontsource/be-vietnam-pro/500.css';
@@ -18,6 +20,7 @@ import '@fontsource/be-vietnam-pro/700.css';
 import '@styles/globals.css';
 
 const clientSideEmotionCache = createEmotionCache();
+
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -49,10 +52,12 @@ function MyApp(props: AppPropsWithLayout) {
     <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <CssBaseline />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <StyletronProvider value={styletron}>
+            <CssBaseline />
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </StyletronProvider>
         </ThemeProvider>
       </CacheProvider>
     </Provider>

@@ -8,10 +8,12 @@ interface FilterOptionState {
 
   checkIn: {
     isActive: boolean;
+    value: string;
   };
 
   checkOut: {
     isActive: boolean;
+    value: string;
   };
 
   who: {
@@ -37,16 +39,20 @@ interface FilterOptionState {
 export const initialState: FilterOptionState = {
   filterOptions: '',
   resetStateRan: false,
+
   where: {
     isActive: false,
     value: '',
   },
+
   checkIn: {
     isActive: false,
+    value: '',
   },
 
   checkOut: {
     isActive: false,
+    value: '',
   },
 
   who: {

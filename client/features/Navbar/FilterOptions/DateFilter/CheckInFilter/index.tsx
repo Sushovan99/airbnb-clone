@@ -10,6 +10,10 @@ export const CheckInFilter: React.FC = () => {
     (state) => state.filterSearch.checkIn.isActive
   );
 
+  const checkInDate = useAppSelector(
+    (state) => state.filterSearch.checkIn.value
+  );
+
   return (
     <Button
       sx={{
@@ -42,11 +46,11 @@ export const CheckInFilter: React.FC = () => {
           variant="h6"
           sx={{
             fontSize: '13px',
-            fontWeight: 'light',
-            color: 'var( --text-light-1)',
+            fontWeight: checkInDate ? '500' : 'light',
+            color: checkInDate ? 'var(--text-dark)' : 'var( --text-light-1)',
           }}
         >
-          Add dates
+          {checkInDate ? checkInDate : 'Add dates'}
         </Typography>
       </Box>
       {isCheckInFilterActive ? (

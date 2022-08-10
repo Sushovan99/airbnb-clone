@@ -11,6 +11,10 @@ export const CheckOutFilter: React.FC = () => {
     (state) => state.filterSearch.checkOut.isActive
   );
 
+  const checkOutDate = useAppSelector(
+    (state) => state.filterSearch.checkOut.value
+  );
+
   return (
     <Button
       sx={{
@@ -44,11 +48,11 @@ export const CheckOutFilter: React.FC = () => {
           variant="h6"
           sx={{
             fontSize: '13px',
-            fontWeight: 'light',
-            color: 'var( --text-light-1)',
+            fontWeight: checkOutDate ? '500' : 'light',
+            color: checkOutDate ? 'var(--text-dark)' : 'var( --text-light-1)',
           }}
         >
-          Add dates
+          {checkOutDate ? checkOutDate : 'Add dates'}
         </Typography>
       </Box>
       {isCheckOutFilterActive ? (
