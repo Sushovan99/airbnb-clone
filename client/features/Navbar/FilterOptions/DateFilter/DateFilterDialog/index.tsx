@@ -10,10 +10,10 @@ export const DateFilterDialog: React.FC = () => {
     (state) => state.filterSearch.checkOut.isActive
   );
 
-  return isCheckInActive || isCheckOutActive ? (
+  return (
     <Box
       sx={{
-        display: 'flex',
+        display: isCheckInActive || isCheckOutActive ? 'flex' : 'none',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
@@ -28,5 +28,5 @@ export const DateFilterDialog: React.FC = () => {
     >
       <CustomDatePicker orientation="horizontal" />
     </Box>
-  ) : null;
+  );
 };
