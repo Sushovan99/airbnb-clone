@@ -1,5 +1,5 @@
 import { StatefulCalendar } from 'baseui/datepicker';
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useAppDispatch } from '@store/hooks';
 import { handleCheckIn, handleCheckOut } from '@store/feature/filterOptions';
 
@@ -13,7 +13,7 @@ export const CustomDatePicker: React.FC<ICustomDatePicker> = ({
   const dispatch = useAppDispatch();
   const [selectedDate, setSelectedDate] = useState<Date[]>([]);
 
-  const handleDispatch = () => {
+  const handleDispatch = useCallback(() => {
     const checkIn = selectedDate[0] ? selectedDate[0] : null;
     const checkOut = selectedDate[1] ? selectedDate[1] : null;
     if (checkIn) {
@@ -25,18 +25,17 @@ export const CustomDatePicker: React.FC<ICustomDatePicker> = ({
       const checkOutStr = checkOut ? checkOut.toDateString().slice(4, 10) : '';
       dispatch(handleCheckOut(checkOutStr));
     }
-  };
+  }, [dispatch, selectedDate]);
 
-  const onDateChange = (date: Date[]) => {
-    setSelectedDate(date);
+  useEffect(() => {
     handleDispatch();
-  };
+  }, [handleDispatch]);
 
   return (
     <>
       <StatefulCalendar
         onChange={({ date }) =>
-          Array.isArray(date) ? onDateChange(date) : date
+          Array.isArray(date) ? setSelectedDate(date) : date
         }
         density="high"
         minDate={new Date()}
