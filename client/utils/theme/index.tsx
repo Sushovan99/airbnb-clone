@@ -45,6 +45,9 @@ export const theme = createTheme({
           '&:not(:last-of-type)': {
             borderColor: 'transparent',
           },
+          '&:not(:first-of-type)': {
+            borderRadius: '3px',
+          },
         },
       },
     },

@@ -1,5 +1,4 @@
 import { Button, Box, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { toggleCheckIn } from '@store/feature/filterOptions';
 import styles from '../../FilterOptions.module.css';
@@ -53,18 +52,6 @@ export const CheckInFilter: React.FC = () => {
           {checkInDate ? checkInDate : 'Add dates'}
         </Typography>
       </Box>
-      {isCheckInFilterActive ? (
-        <div role="button" aria-label="clear-input" className={styles.iconBtn}>
-          <CloseIcon
-            style={{
-              fontSize: '24px',
-              color: 'black',
-              padding: '5px',
-              borderRadius: '50%',
-            }}
-          />
-        </div>
-      ) : null}
     </Button>
   );
 };

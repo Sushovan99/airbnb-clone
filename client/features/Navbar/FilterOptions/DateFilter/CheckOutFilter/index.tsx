@@ -55,18 +55,6 @@ export const CheckOutFilter: React.FC = () => {
           {checkOutDate ? checkOutDate : 'Add dates'}
         </Typography>
       </Box>
-      {isCheckOutFilterActive ? (
-        <div role="button" aria-label="clear-input" className={styles.iconBtn}>
-          <CloseIcon
-            style={{
-              fontSize: '24px',
-              color: 'black',
-              padding: '5px',
-              borderRadius: '50%',
-            }}
-          />
-        </div>
-      ) : null}
     </Button>
   );
 };

@@ -18,10 +18,10 @@ export const RightGroup: React.FC = () => {
     }
   };
 
-  CheckOutsideClickHook<HTMLButtonElement, [boolean, Function]>({
+  CheckOutsideClickHook<HTMLButtonElement, Function>({
     ref: buttonRef,
     handler: handlerFunction,
-    deps: [open, dispatch],
+    deps: [dispatch],
   });
 
   return (
@@ -32,6 +32,9 @@ export const RightGroup: React.FC = () => {
           padding: '0 12px',
           borderRadius: '20px',
           '&:hover': { backgroundColor: grey[100] },
+          '&:focus-visible': {
+            outline: '2px solid black',
+          },
         }}
       >
         Become a host
@@ -60,6 +63,9 @@ export const RightGroup: React.FC = () => {
           '&:hover': {
             boxShadow:
               'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px',
+          },
+          '&:focus-visible': {
+            outline: '2px solid black',
           },
         }}
         onClick={() => dispatch(toggle())}

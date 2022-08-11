@@ -3,7 +3,7 @@ import React, { EventHandler, useEffect } from 'react';
 interface PropType<RefType, DepsType> {
   handler: EventHandler<any>;
   ref: React.RefObject<RefType>;
-  deps?: DepsType[];
+  deps?: [DepsType];
 }
 
 export function CheckOutsideClickHook<RefType, DepsType>(
