@@ -12,18 +12,21 @@ export const CustomDatePicker: React.FC<ICustomDatePicker> = ({
 }: ICustomDatePicker) => {
   const dispatch = useAppDispatch();
   const [selectedDate, setSelectedDate] = useState<Date[]>([]);
-
   const handleDispatch = useCallback(() => {
     const checkIn = selectedDate[0] ? selectedDate[0] : null;
     const checkOut = selectedDate[1] ? selectedDate[1] : null;
     if (checkIn) {
       const checkInStr = checkIn ? checkIn.toDateString().slice(4, 10) : '';
-      dispatch(handleCheckIn(checkInStr));
+      const day = Number(checkInStr.split(' ')[1]);
+      const month = checkInStr.split(' ')[0];
+      dispatch(handleCheckIn({ value: checkInStr, day, month }));
     }
 
     if (checkOut) {
       const checkOutStr = checkOut ? checkOut.toDateString().slice(4, 10) : '';
-      dispatch(handleCheckOut(checkOutStr));
+      const day = Number(checkOutStr.split(' ')[1]);
+      const month = checkOutStr.split(' ')[0];
+      dispatch(handleCheckOut({ value: checkOutStr, day, month }));
     }
   }, [dispatch, selectedDate]);
 

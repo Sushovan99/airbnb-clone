@@ -1,14 +1,17 @@
-import { FC, useState } from 'react';
 import Box from '@mui/material/Box';
 import { RightGroup } from './RightGroup';
 import { LeftGroup } from './LeftGroup';
 import { MidGroup } from './MidGroup';
 import { FilterTab } from './FilterTab';
-import styles from '@styles/Navbar.module.css';
 import { FilterOptions } from './FilterOptions/FilterOptions';
+import { useAppSelector } from '@store/hooks';
+import styles from '@styles/Navbar.module.css';
 
-export const Navbar: FC = () => {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
+export const Navbar: React.FC = () => {
+  const isFilterOpen = useAppSelector(
+    (state) => state.filterSearch.isFilterOpen
+  );
+
   return isFilterOpen ? (
     <Box
       sx={{
@@ -51,10 +54,7 @@ export const Navbar: FC = () => {
     >
       <nav className={styles.nav}>
         <LeftGroup />
-        <MidGroup
-          isFilterOpen={isFilterOpen}
-          setIsFilterOpen={setIsFilterOpen}
-        />
+        <MidGroup />
         <RightGroup />
       </nav>
     </Box>

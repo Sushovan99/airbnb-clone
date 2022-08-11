@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useCallback } from 'react';
 import { Box, Divider } from '@mui/material';
 import { CheckInFilter, CheckOutFilter } from './DateFilter';
 import { AddGuestFilter } from './AddGuestFilter';
@@ -35,11 +35,14 @@ export const FilterOptions: React.FC = () => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const clickOutsideHandler = (e: any) => {
-    if (containerRef.current && !containerRef.current?.contains(e.target)) {
-      dispatch(resetFilterState());
-    }
-  };
+  const clickOutsideHandler = useCallback(
+    (e: any) => {
+      if (containerRef.current && !containerRef.current?.contains(e.target)) {
+        dispatch(resetFilterState());
+      }
+    },
+    [dispatch]
+  );
 
   CheckOutsideClickHook<HTMLDivElement, Function>({
     ref: containerRef,

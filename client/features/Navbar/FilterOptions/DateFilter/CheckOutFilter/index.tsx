@@ -1,5 +1,4 @@
 import { Box, Button, Typography } from '@mui/material';
-import CloseIcon from '@mui/icons-material/Close';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { toggleCheckout } from '@store/feature/filterOptions';
 import styles from '../../FilterOptions.module.css';

@@ -1,26 +1,34 @@
 import { FC } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, Button, ButtonGroup, Divider } from '@mui/material';
-import { useAppDispatch } from '@store/hooks';
-import { selectSearchFilter } from '@store/feature/filterOptions';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import {
+  selectSearchFilter,
+  toggleIsFilterOpen,
+} from '@store/feature/filterOptions';
 
-interface Props {
-  setIsFilterOpen: Function;
-  isFilterOpen: boolean;
-}
-
-export const MidGroup: FC<Props> = ({
-  setIsFilterOpen,
-  isFilterOpen,
-}: Props) => {
+export const MidGroup: FC = () => {
   const dispatch = useAppDispatch();
+  const location = useAppSelector((state) => state.filterSearch.where.value);
+  const checkInDay = useAppSelector((state) => state.filterSearch.checkIn.day);
+  const checkInMonth = useAppSelector(
+    (state) => state.filterSearch.checkIn.month
+  );
+  const checkOutDay = useAppSelector(
+    (state) => state.filterSearch.checkOut.day
+  );
+  const checkOutMonth = useAppSelector(
+    (state) => state.filterSearch.checkOut.month
+  );
+
+  const dateString = `${checkInDay} ${checkInMonth} - ${checkOutDay} ${checkOutMonth}`;
 
   return (
     <Box>
       <ButtonGroup
         variant="text"
         aria-label="filter group"
-        onClick={() => setIsFilterOpen((prev: boolean) => !prev)}
+        onClick={() => dispatch(toggleIsFilterOpen())}
         sx={{
           height: 'auto',
           border: '1px solid var(--border-color)',
@@ -50,7 +58,7 @@ export const MidGroup: FC<Props> = ({
           }}
           onClick={() => dispatch(selectSearchFilter('where'))}
         >
-          Anywhere
+          {location ? location : 'Anywhere'}
         </Button>
         <Divider variant="middle" orientation="vertical" flexItem />
         <Button
@@ -64,7 +72,7 @@ export const MidGroup: FC<Props> = ({
           }}
           onClick={() => dispatch(selectSearchFilter('check in'))}
         >
-          Any week
+          {!checkInDay && !checkOutDay ? 'Any week' : dateString}
         </Button>
         <Divider variant="middle" orientation="vertical" flexItem />
         <Box>

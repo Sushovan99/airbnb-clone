@@ -5,6 +5,10 @@ const filterOptionSlice = createSlice({
   name: 'filterOptions',
   initialState,
   reducers: {
+    toggleIsFilterOpen(state) {
+      state.isFilterOpen = !state.isFilterOpen;
+    },
+
     selectSearchFilter(state, action) {
       state.filterOptions = action.payload;
 
@@ -113,6 +117,10 @@ const filterOptionSlice = createSlice({
       }
     },
 
+    updateTotalGuest(state, action: { payload: number }) {
+      state.who.totalGuest = action.payload;
+    },
+
     // Reseting the values of all guest types (i.e adult, children...)
     resetGuestFilter(state) {
       state.who.isActive = !state.who.isActive;
@@ -122,12 +130,22 @@ const filterOptionSlice = createSlice({
       state.who.pets.value = 0;
     },
 
-    handleCheckIn(state, action: { payload: string }) {
-      state.checkIn.value = action.payload;
+    handleCheckIn(
+      state,
+      action: { payload: { value: string; day: number; month: string } }
+    ) {
+      state.checkIn.value = action.payload.value;
+      state.checkIn.day = action.payload.day;
+      state.checkIn.month = action.payload.month;
     },
 
-    handleCheckOut(state, action: { payload: string }) {
-      state.checkOut.value = action.payload;
+    handleCheckOut(
+      state,
+      action: { payload: { value: string; day: number; month: string } }
+    ) {
+      state.checkOut.value = action.payload.value;
+      state.checkOut.day = action.payload.day;
+      state.checkOut.month = action.payload.month;
     },
 
     updateWhereInput(state, action: { payload: string }) {
@@ -145,6 +163,7 @@ const filterOptionSlice = createSlice({
 });
 
 export const {
+  toggleIsFilterOpen,
   selectSearchFilter,
   toggleCheckIn,
   toggleCheckout,
@@ -153,6 +172,7 @@ export const {
   resetFilterState,
   addGuest,
   removeGuest,
+  updateTotalGuest,
   resetGuestFilter,
   handleCheckIn,
   handleCheckOut,

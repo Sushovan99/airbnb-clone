@@ -2,7 +2,12 @@ import { Box, Button, Typography } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
-import { toggleGuest, resetGuestFilter } from '@store/feature/filterOptions';
+import {
+  toggleGuest,
+  resetGuestFilter,
+  toggleIsFilterOpen,
+  updateTotalGuest,
+} from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
 
 export const AddGuestFilter: React.FC = () => {
@@ -10,19 +15,14 @@ export const AddGuestFilter: React.FC = () => {
   const isGuestFilterActive = useAppSelector(
     (state) => state.filterSearch.who.isActive
   );
-
   const isResetStateRan = useAppSelector(
     (state) => state.filterSearch.resetStateRan
   );
-
   const adult = useAppSelector((state) => state.filterSearch.who.adult.value);
-
   const children = useAppSelector(
     (state) => state.filterSearch.who.children.value
   );
-
   const infant = useAppSelector((state) => state.filterSearch.who.infant.value);
-
   const pet = useAppSelector((state) => state.filterSearch.who.pets.value);
 
   const guestStringFunc = (): string | undefined => {
@@ -126,6 +126,7 @@ export const AddGuestFilter: React.FC = () => {
           padding: isResetStateRan ? '10px' : '10px 15px',
           transition: 'padding ease 0.4s ',
         }}
+        onClick={() => dispatch(toggleIsFilterOpen())}
       >
         <SearchIcon />
         {isResetStateRan ? null : <p>Search</p>}
