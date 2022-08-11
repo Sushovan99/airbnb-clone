@@ -42,6 +42,9 @@ export const RightGroup: React.FC = () => {
       <IconButton
         sx={{
           color: 'primary.dark',
+          '&:focus-visible': {
+            outline: '2px solid black',
+          },
         }}
       >
         <Language fontSize="small" />

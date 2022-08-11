@@ -86,9 +86,6 @@ export const theme = createTheme({
     },
 
     MuiTab: {
-      defaultProps: {
-        disableRipple: true,
-      },
       styleOverrides: {
         root: {
           textTransform: 'none',

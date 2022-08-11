@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import { RightGroup } from './RightGroup';
 import { LeftGroup } from './LeftGroup';
 import { MidGroup } from './MidGroup';
-import { FilterTab } from './filterTab';
+import { FilterTab } from './FilterTab';
 import styles from '@styles/Navbar.module.css';
 import { FilterOptions } from './FilterOptions/FilterOptions';
 

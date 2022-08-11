@@ -66,6 +66,9 @@ export const AddGuestFilter: React.FC = () => {
         '&:hover': {
           background: !isGuestFilterActive ? 'var(--border-color)' : 'white',
         },
+        '&:focus-visible': {
+          outline: '2px solid black',
+        },
         position: 'relative',
       }}
       onClick={() => dispatch(toggleGuest())}

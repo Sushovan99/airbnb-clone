@@ -32,6 +32,9 @@ export const CheckOutFilter: React.FC = () => {
         '&:hover': {
           background: !isCheckOutFilterActive ? 'var(--border-color)' : 'white',
         },
+        '&:focus-visible': {
+          outline: '2px solid black',
+        },
       }}
       onClick={() => dispatch(toggleCheckout())}
     >

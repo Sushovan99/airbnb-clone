@@ -29,6 +29,9 @@ export const CheckInFilter: React.FC = () => {
         '&:hover': {
           background: !isCheckInFilterActive ? 'var(--border-color)' : 'white',
         },
+        '&:focus-visible': {
+          outline: '2px solid black',
+        },
       }}
       onClick={() => dispatch(toggleCheckIn())}
     >
