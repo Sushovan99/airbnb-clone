@@ -8,6 +8,7 @@ import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { resetFilterState } from '@store/feature/filterOptions';
 import { CheckOutsideClickHook } from '@utils/hooks/checkOutsideClick';
 import { DateFilterDialog } from './DateFilter';
+import { LocationFilterDialog } from './LocationFilter';
 
 export const FilterOptions: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -91,6 +92,7 @@ export const FilterOptions: React.FC = () => {
       <AddGuestFilter />
       <GuestFilterDialog />
       <DateFilterDialog />
+      <LocationFilterDialog />
     </Box>
   );
 };

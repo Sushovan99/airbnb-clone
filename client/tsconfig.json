@@ -21,7 +21,7 @@
       "@features/*": ["features/*"],
       "@store/*": ["./store/*"],
       "@utils/*": ["./utils/*"],
-      "@public/*": ["/public/*"]
+      "@public/*": ["./public/*"]
     }
   },
   "include": [

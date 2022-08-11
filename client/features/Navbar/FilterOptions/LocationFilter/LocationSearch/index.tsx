@@ -3,7 +3,7 @@ import { Box, Button } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { toggleLocation, updateWhereInput } from '@store/feature/filterOptions';
-import styles from '../FilterOptions.module.css';
+import styles from '../../FilterOptions.module.css';
 
 export const LocationFilter: React.FC = () => {
   const dispatch = useAppDispatch();

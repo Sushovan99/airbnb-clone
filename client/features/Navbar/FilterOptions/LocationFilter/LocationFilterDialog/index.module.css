@@ -1,0 +1,8 @@
+.locationsMapGrid {
+  display: grid;
+  grid-template-columns: repeat(3, min-content);
+  align-content: center;
+  row-gap: 24px;
+  column-gap: 5px;
+  flex-wrap: wrap;
+}
