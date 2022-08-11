@@ -122,16 +122,24 @@ const filterOptionSlice = createSlice({
       state.who.pets.value = 0;
     },
 
-    updateWhereInput(state, action: { payload: string }) {
-      state.where.value = action.payload;
-    },
-
     handleCheckIn(state, action: { payload: string }) {
       state.checkIn.value = action.payload;
     },
 
     handleCheckOut(state, action: { payload: string }) {
       state.checkOut.value = action.payload;
+    },
+
+    updateWhereInput(state, action: { payload: string }) {
+      if (action.payload === `I'm flexible`) {
+        state.where.value = '';
+        state.where.isActive = false;
+        state.checkIn.isActive = true;
+      } else {
+        state.where.value = action.payload;
+        state.where.isActive = false;
+        state.checkIn.isActive = true;
+      }
     },
   },
 });
@@ -146,9 +154,9 @@ export const {
   addGuest,
   removeGuest,
   resetGuestFilter,
-  updateWhereInput,
   handleCheckIn,
   handleCheckOut,
+  updateWhereInput,
 } = filterOptionSlice.actions;
 
 export default filterOptionSlice.reducer;

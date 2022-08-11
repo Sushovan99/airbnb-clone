@@ -1,14 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
 import { Box, Button, Typography } from '@mui/material';
-import { useAppSelector } from '@store/hooks';
+import { useAppSelector, useAppDispatch } from '@store/hooks';
+import { updateWhereInput } from '@store/feature/filterOptions';
 import { renderData } from './data';
 import styles from './index.module.css';
 
 export const LocationFilterDialog: React.FC = () => {
+  const dispatch = useAppDispatch();
   const isLocationFilterActive = useAppSelector(
     (state) => state.filterSearch.where.isActive
   );
+
   return isLocationFilterActive ? (
     <Box
       component="div"
@@ -27,7 +30,7 @@ export const LocationFilterDialog: React.FC = () => {
         left: 0,
         borderRadius: '30px',
         border: '1px solid var(--border-color)',
-        overflow: 'auto',
+        overflowY: 'auto',
       }}
     >
       <Typography
@@ -55,11 +58,16 @@ export const LocationFilterDialog: React.FC = () => {
                 borderRadius: '10px',
                 padding: 0,
                 margin: '4px',
+                transition: 'all 0.3s ease',
                 '&:hover': {
                   width: 'auto',
                   outline: '1px solid black',
                 },
+                '&:active': {
+                  transform: 'scale(0.95)',
+                },
               }}
+              onClick={() => dispatch(updateWhereInput(data.sub))}
             >
               <Image
                 src={data.imgURL}
