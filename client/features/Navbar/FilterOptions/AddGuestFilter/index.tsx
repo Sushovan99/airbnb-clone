@@ -5,8 +5,7 @@ import { useAppSelector, useAppDispatch } from '@store/hooks';
 import {
   toggleGuest,
   resetGuestFilter,
-  toggleIsFilterOpen,
-  updateTotalGuest,
+  closeFilter,
 } from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
 
@@ -126,7 +125,7 @@ export const AddGuestFilter: React.FC = () => {
           padding: isResetStateRan ? '10px' : '10px 15px',
           transition: 'padding ease 0.4s ',
         }}
-        onClick={() => dispatch(toggleIsFilterOpen())}
+        onClick={() => dispatch(closeFilter())}
       >
         <SearchIcon />
         {isResetStateRan ? null : <p>Search</p>}

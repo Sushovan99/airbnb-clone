@@ -2,10 +2,7 @@ import { FC } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import { Box, Button, ButtonGroup, Divider } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
-import {
-  selectSearchFilter,
-  toggleIsFilterOpen,
-} from '@store/feature/filterOptions';
+import { selectSearchFilter, openFilter } from '@store/feature/filterOptions';
 
 export const MidGroup: FC = () => {
   const dispatch = useAppDispatch();
@@ -20,15 +17,17 @@ export const MidGroup: FC = () => {
   const checkOutMonth = useAppSelector(
     (state) => state.filterSearch.checkOut.month
   );
-
   const dateString = `${checkInDay} ${checkInMonth} - ${checkOutDay} ${checkOutMonth}`;
+  const totalGuest = useAppSelector(
+    (state) => state.filterSearch.who.totalGuest
+  );
 
   return (
     <Box>
       <ButtonGroup
         variant="text"
         aria-label="filter group"
-        onClick={() => dispatch(toggleIsFilterOpen())}
+        onClick={() => dispatch(openFilter())}
         sx={{
           height: 'auto',
           border: '1px solid var(--border-color)',
@@ -82,15 +81,21 @@ export const MidGroup: FC = () => {
               display: 'flex',
               paddingLeft: '16px',
               gap: '10px',
-              color: 'var(--text-light)',
+              color: totalGuest ? 'var(--text-dark)' : 'var(--text-light)',
               borderTopRightRadius: '30px',
               borderBottomRightRadius: '30px',
-              fontWeight: 300,
+              fontWeight: totalGuest ? 500 : 300,
               '&:focus-visible': { outline: '2px solid black' },
             }}
             onClick={() => dispatch(selectSearchFilter('who'))}
           >
-            Add guests
+            {totalGuest
+              ? `${
+                  totalGuest > 1
+                    ? `${totalGuest} guests`
+                    : `${totalGuest} guest`
+                }`
+              : 'Add guests'}
             <SearchIcon
               fontSize="large"
               sx={{

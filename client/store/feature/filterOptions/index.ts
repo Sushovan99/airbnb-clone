@@ -5,8 +5,12 @@ const filterOptionSlice = createSlice({
   name: 'filterOptions',
   initialState,
   reducers: {
-    toggleIsFilterOpen(state) {
-      state.isFilterOpen = !state.isFilterOpen;
+    openFilter(state) {
+      state.isFilterOpen = true;
+    },
+
+    closeFilter(state) {
+      state.isFilterOpen = false;
     },
 
     selectSearchFilter(state, action) {
@@ -72,13 +76,19 @@ const filterOptionSlice = createSlice({
     ) {
       if (action.payload === 'adult') {
         state.who.adult.value += 1;
+        state.who.totalGuest += 1;
       }
       if (action.payload === 'children') {
         if (state.who.children.value === 0) {
           state.who.children.value += 1;
-          if (!(state.who.adult.value >= 1)) state.who.adult.value += 1;
+          state.who.totalGuest += 1;
+          if (!(state.who.adult.value >= 1)) {
+            state.who.adult.value += 1;
+            state.who.totalGuest += 1;
+          }
         } else {
           state.who.children.value += 1;
+          state.who.totalGuest += 1;
         }
       }
       if (action.payload === 'infant') {
@@ -104,10 +114,16 @@ const filterOptionSlice = createSlice({
       action: { payload: 'adult' | 'children' | 'infant' | 'pets' }
     ) {
       if (action.payload === 'adult') {
-        if (state.who.adult.value > 0) state.who.adult.value -= 1;
+        if (state.who.adult.value > 0) {
+          state.who.adult.value -= 1;
+          state.who.totalGuest -= 1;
+        }
       }
       if (action.payload === 'children') {
-        if (state.who.children.value > 0) state.who.children.value -= 1;
+        if (state.who.children.value > 0) {
+          state.who.children.value -= 1;
+          state.who.totalGuest -= 1;
+        }
       }
       if (action.payload === 'infant') {
         if (state.who.infant.value > 0) state.who.infant.value -= 1;
@@ -117,10 +133,6 @@ const filterOptionSlice = createSlice({
       }
     },
 
-    updateTotalGuest(state, action: { payload: number }) {
-      state.who.totalGuest = action.payload;
-    },
-
     // Reseting the values of all guest types (i.e adult, children...)
     resetGuestFilter(state) {
       state.who.isActive = !state.who.isActive;
@@ -128,6 +140,7 @@ const filterOptionSlice = createSlice({
       state.who.children.value = 0;
       state.who.infant.value = 0;
       state.who.pets.value = 0;
+      state.who.totalGuest = 0;
     },
 
     handleCheckIn(
@@ -150,7 +163,8 @@ const filterOptionSlice = createSlice({
 
     updateWhereInput(state, action: { payload: string }) {
       state.where.isActive = true;
-      state.where.value = action.payload;
+      const inputStr = action.payload;
+      state.where.value = inputStr.charAt(0).toUpperCase() + inputStr.slice(1);
     },
 
     updateLocationOnClick(state, action: { payload: string }) {
@@ -168,7 +182,8 @@ const filterOptionSlice = createSlice({
 });
 
 export const {
-  toggleIsFilterOpen,
+  openFilter,
+  closeFilter,
   selectSearchFilter,
   toggleCheckIn,
   toggleCheckout,
@@ -177,7 +192,6 @@ export const {
   resetFilterState,
   addGuest,
   removeGuest,
-  updateTotalGuest,
   resetGuestFilter,
   handleCheckIn,
   handleCheckOut,

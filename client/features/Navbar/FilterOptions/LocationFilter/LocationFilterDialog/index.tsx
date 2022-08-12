@@ -57,13 +57,17 @@ export const LocationFilterDialog: React.FC = () => {
                 borderRadius: '10px',
                 padding: 0,
                 margin: '4px',
-                transition: 'all 0.3s ease',
+                transition: 'transform 0.3s ease',
                 '&:hover': {
                   width: 'auto',
                   outline: '1px solid black',
                 },
                 '&:active': {
                   transform: 'scale(0.95)',
+                },
+
+                '&:focus-visible': {
+                  outline: '2px solid black',
                 },
               }}
               onClick={() => dispatch(updateLocationOnClick(data.sub))}
@@ -76,7 +80,9 @@ export const LocationFilterDialog: React.FC = () => {
                 layout="fixed"
                 objectFit="cover"
                 priority
-                style={{ borderRadius: '10px' }}
+                style={{
+                  borderRadius: '10px',
+                }}
               />
             </Button>
             <Typography

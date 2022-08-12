@@ -50,6 +50,8 @@ export const FilterOptions: React.FC = () => {
     deps: [dispatch],
   });
 
+  console.log('I ran');
+
   return (
     <Box
       ref={containerRef}
