@@ -22,6 +22,7 @@ export const DateFilterDialog: React.FC = () => {
         top: 80,
         borderRadius: '30px',
         border: '1px solid var(--border-color)',
+        backgroundColor: 'white',
       }}
     >
       <CustomDatePicker orientation="horizontal" />

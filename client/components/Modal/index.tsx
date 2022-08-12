@@ -5,7 +5,7 @@ type TransitionDirection = 'right' | 'left' | 'up' | 'down';
 interface ICustomModal {
   open: boolean;
   close: Function;
-  style: Object;
+  style?: Object;
   direction: TransitionDirection;
   children: React.ReactNode;
 }
@@ -18,7 +18,7 @@ export const CustomModal: FC<ICustomModal> = ({
   children,
 }: ICustomModal) => {
   return (
-    <Modal open={open} onClose={() => close()}>
+    <Modal open={open} onClose={() => close()} keepMounted closeAfterTransition>
       <Slide
         direction={transistionDirection}
         in={open}

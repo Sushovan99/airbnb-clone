@@ -22,14 +22,14 @@ export const LocationFilterDialog: React.FC = () => {
         flexWrap: 'no-wrap',
         padding: '30px 40px',
         width: '57%',
-        maxHeight: '3ovh',
-        height: 'max-content',
+        height: '72vh',
         position: 'absolute',
         top: 80,
         left: 0,
         borderRadius: '30px',
         border: '1px solid var(--border-color)',
         overflowY: 'auto',
+        backgroundColor: 'white',
       }}
     >
       <Typography
@@ -38,7 +38,7 @@ export const LocationFilterDialog: React.FC = () => {
         sx={{
           marginBottom: '25px',
           alignSelf: 'flex-start',
-          marginLeft: '15px',
+          marginLeft: '8px',
         }}
       >
         Search by region

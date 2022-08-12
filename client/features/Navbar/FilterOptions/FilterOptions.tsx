@@ -50,8 +50,6 @@ export const FilterOptions: React.FC = () => {
     deps: [dispatch],
   });
 
-  console.log('I ran');
-
   return (
     <Box
       ref={containerRef}
@@ -63,7 +61,8 @@ export const FilterOptions: React.FC = () => {
         border: '1px solid var(--border-color)',
         alignItems: 'center',
         borderRadius: '50px',
-        margin: '14px',
+        marginBottom: '14px',
+        marginTop: '3px',
         background: hasResetRan ? 'white' : 'var(--background-1)',
       }}
     >

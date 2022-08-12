@@ -17,10 +17,15 @@ export const FilterTab: FC = () => {
         value={tabValue}
         onChange={handleChange}
         aria-label="filter tabs"
+        variant="standard"
       >
-        <Tab value="one" label="Stays" />
-        <Tab value="two" label="Experiences" />
-        <Tab value="three" label="Online experiences" />
+        <Tab value="one" label="Stays" sx={{ fontSize: '15px' }} />
+        <Tab value="two" label="Experiences" sx={{ fontSize: '15px' }} />
+        <Tab
+          value="three"
+          label="Online experiences"
+          sx={{ fontSize: '15px' }}
+        />
       </Tabs>
     </Box>
   );

@@ -96,7 +96,7 @@ export const ModalContent: React.FC<ModalContentProps> = ({
     >
       {content.map(({ title, links }) => {
         return (
-          <Grid item key={title} xs={4}>
+          <Grid item key={title} md={4}>
             <Box>
               <Typography
                 variant="h3"

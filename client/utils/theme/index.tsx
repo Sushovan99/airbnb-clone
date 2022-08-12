@@ -86,6 +86,10 @@ export const theme = createTheme({
     },
 
     MuiTab: {
+      defaultProps: {
+        disableTouchRipple: true,
+        disableFocusRipple: false,
+      },
       styleOverrides: {
         root: {
           textTransform: 'none',
@@ -115,6 +119,14 @@ export const theme = createTheme({
         root: {
           boxShadow: 'none',
           border: '1px solid var(--border-color)',
+        },
+      },
+    },
+
+    MuiBackdrop: {
+      styleOverrides: {
+        root: {
+          backgroundColor: 'rgb(0 0 0 /25%)',
         },
       },
     },

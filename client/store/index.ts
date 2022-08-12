@@ -1,15 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import footerModalReducer from './feature/footerModal';
-import loginModalReducre from './feature/loginModal';
-import filterModalReducer from './feature/filterModal';
+import loginModalReducer from './feature/loginModal';
 import filterTabReducer from './feature/filterTab';
 import filterOptionReducer from './feature/filterOptions';
 
 const store = configureStore({
   reducer: {
     footerModal: footerModalReducer,
-    loginModal: loginModalReducre,
-    filterModal: filterModalReducer,
+    loginModal: loginModalReducer,
     filterTab: filterTabReducer,
     filterSearch: filterOptionReducer,
   },

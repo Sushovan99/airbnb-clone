@@ -81,6 +81,7 @@ export const GuestFilterDialog: React.FC = () => {
         right: 0,
         borderRadius: '30px',
         border: '1px solid var(--border-color)',
+        backgroundColor: 'white',
       }}
     >
       {contentText.map((item) => (

@@ -5,14 +5,17 @@ const filterOptionSlice = createSlice({
   name: 'filterOptions',
   initialState,
   reducers: {
+    // Opens Filter options
     openFilter(state) {
       state.isFilterOpen = true;
     },
 
+    // Closes Filter options
     closeFilter(state) {
       state.isFilterOpen = false;
     },
 
+    // Selecting the type of filter to open
     selectSearchFilter(state, action) {
       state.filterOptions = action.payload;
 
@@ -29,6 +32,7 @@ const filterOptionSlice = createSlice({
       }
     },
 
+    // Making only the location filter active
     toggleLocation(state) {
       state.where.isActive = true;
       state.checkIn.isActive = false;
@@ -37,6 +41,7 @@ const filterOptionSlice = createSlice({
       state.resetStateRan = false;
     },
 
+    // Making only the checkout date filter active
     toggleCheckout(state) {
       state.checkOut.isActive = !state.checkOut.isActive;
       state.checkIn.isActive = false;
@@ -45,6 +50,7 @@ const filterOptionSlice = createSlice({
       state.resetStateRan = false;
     },
 
+    // Making only the checkin date filter active
     toggleCheckIn(state) {
       state.checkIn.isActive = !state.checkIn.isActive;
       state.checkOut.isActive = false;
@@ -53,6 +59,7 @@ const filterOptionSlice = createSlice({
       state.resetStateRan = false;
     },
 
+    // Making only the add guest filter active
     toggleGuest(state) {
       state.who.isActive = !state.who.isActive;
       state.checkIn.isActive = false;
@@ -61,7 +68,7 @@ const filterOptionSlice = createSlice({
       state.resetStateRan = false;
     },
 
-    // Closing all ACTIVE filters
+    // Closing all ACTIVE filters when clicked outside of filter options
     resetFilterState(state) {
       state.where.isActive = false;
       state.checkIn.isActive = false;
@@ -70,6 +77,7 @@ const filterOptionSlice = createSlice({
       state.resetStateRan = true;
     },
 
+    // Reducer logic for adding guests
     addGuest(
       state,
       action: { payload: 'adult' | 'children' | 'infant' | 'pets' }
@@ -109,6 +117,7 @@ const filterOptionSlice = createSlice({
       }
     },
 
+    // Reducer logic for removing guests
     removeGuest(
       state,
       action: { payload: 'adult' | 'children' | 'infant' | 'pets' }
@@ -143,6 +152,7 @@ const filterOptionSlice = createSlice({
       state.who.totalGuest = 0;
     },
 
+    // Updating the checkin date filter
     handleCheckIn(
       state,
       action: { payload: { value: string; day: number; month: string } }
@@ -152,6 +162,7 @@ const filterOptionSlice = createSlice({
       state.checkIn.month = action.payload.month;
     },
 
+    // Updating the checkout date filter
     handleCheckOut(
       state,
       action: { payload: { value: string; day: number; month: string } }
@@ -161,12 +172,14 @@ const filterOptionSlice = createSlice({
       state.checkOut.month = action.payload.month;
     },
 
+    // Updating the location filter value when location filter input changes
     updateWhereInput(state, action: { payload: string }) {
       state.where.isActive = true;
       const inputStr = action.payload;
       state.where.value = inputStr.charAt(0).toUpperCase() + inputStr.slice(1);
     },
 
+    // Updating the location filter value when we click on preset values
     updateLocationOnClick(state, action: { payload: string }) {
       if (action.payload === "I'm flexible") {
         state.where.value = '';
