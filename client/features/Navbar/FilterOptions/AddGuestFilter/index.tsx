@@ -15,9 +15,23 @@ export const AddGuestFilter: React.FC = () => {
   const isGuestFilterActive = useAppSelector(
     (state) => state.filterSearch.who.isActive
   );
-  const isResetStateRan = useAppSelector(
-    (state) => state.filterSearch.resetStateRan
+  const isLocationFilterActive = useAppSelector(
+    (state) => state.filterSearch.where.isActive
   );
+  const isCheckInFilterActive = useAppSelector(
+    (state) => state.filterSearch.checkIn.isActive
+  );
+
+  const isCheckOutFilterActive = useAppSelector(
+    (state) => state.filterSearch.checkOut.isActive
+  );
+
+  const isAnyFilterActive =
+    isCheckInFilterActive ||
+    isCheckOutFilterActive ||
+    isLocationFilterActive ||
+    isGuestFilterActive;
+
   const adult = useAppSelector((state) => state.filterSearch.who.adult.value);
   const children = useAppSelector(
     (state) => state.filterSearch.who.children.value
@@ -128,13 +142,13 @@ export const AddGuestFilter: React.FC = () => {
         role="button"
         className={styles.searchBtn}
         style={{
-          padding: isResetStateRan ? '10px' : '10px 15px',
+          padding: isAnyFilterActive ? '10px 15px' : '10px',
           transition: 'padding ease 0.4s ',
         }}
         onClick={handleSearch}
       >
         <SearchIcon />
-        {isResetStateRan ? null : <p>Search</p>}
+        {isAnyFilterActive ? <p>Search</p> : null}
       </div>
     </Button>
   );
