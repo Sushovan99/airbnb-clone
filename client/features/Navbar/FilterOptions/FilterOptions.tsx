@@ -29,9 +29,11 @@ export const FilterOptions: React.FC = () => {
     (state) => state.filterSearch.who.isActive
   );
 
-  const hasResetRan = useAppSelector(
-    (state) => state.filterSearch.resetStateRan
-  );
+  const isAnyFilterActive =
+    isCheckInFilterActive ||
+    isCheckOutFilterActive ||
+    isAddGuestFilterActive ||
+    isLocationFilterActive;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -63,7 +65,7 @@ export const FilterOptions: React.FC = () => {
         borderRadius: '50px',
         marginBottom: '14px',
         marginTop: '3px',
-        background: hasResetRan ? 'white' : 'var(--background-1)',
+        background: isAnyFilterActive ? 'var(--background-1)' : 'white',
       }}
     >
       <LocationFilter />

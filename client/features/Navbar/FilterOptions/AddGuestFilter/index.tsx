@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from '@store/hooks';
 import {
   toggleGuest,
   resetGuestFilter,
+  resetFilterState,
   closeFilter,
 } from '@store/feature/filterOptions';
 import styles from '../FilterOptions.module.css';
@@ -46,6 +47,11 @@ export const AddGuestFilter: React.FC = () => {
   };
 
   const guestString = guestStringFunc();
+  const handleSearch = (e: any) => {
+    e.stopPropagation();
+    dispatch(resetFilterState());
+    dispatch(closeFilter());
+  };
 
   return (
     <Button
@@ -125,7 +131,7 @@ export const AddGuestFilter: React.FC = () => {
           padding: isResetStateRan ? '10px' : '10px 15px',
           transition: 'padding ease 0.4s ',
         }}
-        onClick={() => dispatch(closeFilter())}
+        onClick={handleSearch}
       >
         <SearchIcon />
         {isResetStateRan ? null : <p>Search</p>}
