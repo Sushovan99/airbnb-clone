@@ -149,7 +149,12 @@ const filterOptionSlice = createSlice({
     },
 
     updateWhereInput(state, action: { payload: string }) {
-      if (action.payload === `I'm flexible`) {
+      state.where.isActive = true;
+      state.where.value = action.payload;
+    },
+
+    updateLocationOnClick(state, action: { payload: string }) {
+      if (action.payload === "I'm flexible") {
         state.where.value = '';
         state.where.isActive = false;
         state.checkIn.isActive = true;
@@ -177,6 +182,7 @@ export const {
   handleCheckIn,
   handleCheckOut,
   updateWhereInput,
+  updateLocationOnClick,
 } = filterOptionSlice.actions;
 
 export default filterOptionSlice.reducer;

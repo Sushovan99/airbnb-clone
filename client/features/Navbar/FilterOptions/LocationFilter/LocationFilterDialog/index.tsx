@@ -1,8 +1,7 @@
-import React from 'react';
 import Image from 'next/image';
 import { Box, Button, Typography } from '@mui/material';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
-import { updateWhereInput } from '@store/feature/filterOptions';
+import { updateLocationOnClick } from '@store/feature/filterOptions';
 import { renderData } from './data';
 import styles from './index.module.css';
 
@@ -67,7 +66,7 @@ export const LocationFilterDialog: React.FC = () => {
                   transform: 'scale(0.95)',
                 },
               }}
-              onClick={() => dispatch(updateWhereInput(data.sub))}
+              onClick={() => dispatch(updateLocationOnClick(data.sub))}
             >
               <Image
                 src={data.imgURL}
