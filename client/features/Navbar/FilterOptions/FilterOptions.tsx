@@ -1,5 +1,5 @@
 import React, { useRef, useCallback } from 'react';
-import { Box, Divider } from '@mui/material';
+import { Box, Divider, Zoom } from '@mui/material';
 import { CheckInFilter, CheckOutFilter } from './DateFilter';
 import { AddGuestFilter } from './AddGuestFilter';
 import { LocationFilter } from './LocationFilter';
@@ -29,6 +29,10 @@ export const FilterOptions: React.FC = () => {
     (state) => state.filterSearch.who.isActive
   );
 
+  const isFilterOpen = useAppSelector(
+    (state) => state.filterSearch.isFilterOpen
+  );
+
   const isAnyFilterActive =
     isCheckInFilterActive ||
     isCheckOutFilterActive ||
@@ -53,52 +57,54 @@ export const FilterOptions: React.FC = () => {
   });
 
   return (
-    <Box
-      ref={containerRef}
-      sx={{
-        width: '100%',
-        display: 'grid',
-        position: 'relative',
-        gridTemplateColumns: '2fr 1px 1fr 1px 1fr 1px 1.8fr',
-        border: '1px solid var(--border-color)',
-        alignItems: 'center',
-        borderRadius: '50px',
-        marginBottom: '14px',
-        marginTop: '3px',
-        background: isAnyFilterActive ? 'var(--background-1)' : 'white',
-      }}
-    >
-      <LocationFilter />
-      <Divider
-        orientation="vertical"
-        variant="middle"
+    <Zoom in={isFilterOpen} appear={true} mountOnEnter>
+      <Box
+        ref={containerRef}
         sx={{
-          height: '50%',
-          opacity: isCheckInFilterActive || isLocationFilterActive ? 0 : 1,
+          width: '100%',
+          display: 'grid',
+          position: 'relative',
+          gridTemplateColumns: '2fr 1px 1fr 1px 1fr 1px 1.8fr',
+          border: '1px solid var(--border-color)',
+          alignItems: 'center',
+          borderRadius: '50px',
+          marginBottom: '14px',
+          marginTop: '3px',
+          background: isAnyFilterActive ? 'var(--background-1)' : 'white',
         }}
-      />
-      <CheckInFilter />
-      <Divider
-        orientation="vertical"
-        variant="middle"
-        sx={{
-          height: '50%',
-          opacity: isCheckInFilterActive || isCheckOutFilterActive ? 0 : 1,
-        }}
-      />
-      <CheckOutFilter />
-      <Divider
-        orientation="vertical"
-        variant="middle"
-        sx={{
-          height: '50%',
-          opacity: isCheckOutFilterActive || isAddGuestFilterActive ? 0 : 1,
-        }}
-      />
-      <AddGuestFilter />
-      <GuestFilterDialog />
-      <DateFilterDialog />
-      <LocationFilterDialog />
-    </Box>
+      >
+        <LocationFilter />
+        <Divider
+          orientation="vertical"
+          variant="middle"
+          sx={{
+            height: '50%',
+            opacity: isCheckInFilterActive || isLocationFilterActive ? 0 : 1,
+          }}
+        />
+        <CheckInFilter />
+        <Divider
+          orientation="vertical"
+          variant="middle"
+          sx={{
+            height: '50%',
+            opacity: isCheckInFilterActive || isCheckOutFilterActive ? 0 : 1,
+          }}
+        />
+        <CheckOutFilter />
+        <Divider
+          orientation="vertical"
+          variant="middle"
+          sx={{
+            height: '50%',
+            opacity: isCheckOutFilterActive || isAddGuestFilterActive ? 0 : 1,
+          }}
+        />
+        <AddGuestFilter />
+        <GuestFilterDialog />
+        <DateFilterDialog />
+        <LocationFilterDialog />
+      </Box>
+    </Zoom>
   );
 };

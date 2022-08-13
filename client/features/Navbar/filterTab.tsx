@@ -1,17 +1,20 @@
-import { Box, Tab, Tabs } from '@mui/material';
-import { FC } from 'react';
+import { Tab, Tabs, Zoom } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { setValue } from '@store/feature/filterTab';
 
-export const FilterTab: FC = () => {
+export const FilterTab: React.FC = () => {
   const dispatch = useAppDispatch();
   const tabValue = useAppSelector((state) => state.filterTab.value);
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     dispatch(setValue(newValue));
   };
 
+  const isFilterOpen = useAppSelector(
+    (state) => state.filterSearch.isFilterOpen
+  );
+
   return (
-    <Box>
+    <Zoom in={isFilterOpen} appear={true} mountOnEnter unmountOnExit>
       <Tabs
         textColor="inherit"
         value={tabValue}
@@ -27,6 +30,6 @@ export const FilterTab: FC = () => {
           sx={{ fontSize: '15px' }}
         />
       </Tabs>
-    </Box>
+    </Zoom>
   );
 };

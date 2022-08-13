@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { Box, Button, ButtonGroup, Divider } from '@mui/material';
+import { Box, Button, ButtonGroup, Divider, Grow } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '@store/hooks';
 import { selectSearchFilter, openFilter } from '@store/feature/filterOptions';
 
@@ -22,8 +22,12 @@ export const MidGroup: FC = () => {
     (state) => state.filterSearch.who.totalGuest
   );
 
+  const isFilterOpen = useAppSelector(
+    (state) => state.filterSearch.isFilterOpen
+  );
+
   return (
-    <Box>
+    <Grow in={!isFilterOpen} appear={true} mountOnEnter>
       <ButtonGroup
         variant="text"
         aria-label="filter group"
@@ -109,6 +113,6 @@ export const MidGroup: FC = () => {
           </Button>
         </Box>
       </ButtonGroup>
-    </Box>
+    </Grow>
   );
 };
