@@ -17,12 +17,11 @@
     "baseUrl": ".",
     "removeComments": true,
     "paths": {
-      "@components/*": ["components/*"],
-      "@styles/*": ["/styles/*"],
-      "@features/*": ["features/*"],
-      "@store/*": ["./store/*"],
-      "@utils/*": ["./utils/*"],
-      "@public/*": ["./public/*"]
+      "@src/*": ["src/*"],
+      "@styles/*": ["styles/*"],
+      "@store/*": ["store/*"],
+      "@utils/*": ["utils/*"],
+      "@public/*": ["public/*"]
     }
   },
   "include": [

@@ -1,0 +1,206 @@
+.firstTwoTabs {
+  outline: none;
+  font-size: 16px;
+  line-height: 20px;
+  display: inline-block;
+  font-weight: 400;
+  pointer-events: auto;
+  position: relative;
+  z-index: 0;
+}
+
+.firstTwoTabs:hover {
+  text-decoration: none;
+}
+
+.active:hover {
+  opacity: 1;
+  cursor: default;
+}
+
+.textColor {
+  color: #222222;
+}
+
+.tabBtn {
+  border-width: 1px;
+  border-style: solid;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  border-radius: 8px;
+  color: inherit;
+  display: block;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  font-weight: inherit;
+  outline: none;
+  touch-action: manipulation;
+}
+
+.tabBtn:focus-visible {
+  transition: box-shadow 0.2s ease;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 0 0 4px #222222;
+}
+
+.tabBtn:active {
+  transform: none;
+}
+
+.textBox {
+  margin: 10px 12px;
+  position: relative;
+}
+
+.textBox::after {
+  content: '';
+  height: 2px;
+  position: absolute;
+  top: calc(100% + 8px);
+  width: 100%;
+  background-color: currentcolor;
+  inset-inline: 0;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.textBox:hover::after {
+  opacity: 0.65;
+  transform: scaleX(1);
+}
+
+.textBoxActive::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.textBoxActive:hover::after {
+  opacity: 1;
+}
+
+.text {
+  display: inline-block;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+}
+
+.onlineExperience {
+  cursor: pointer !important;
+  position: relative !important;
+  touch-action: manipulation !important;
+  font-family: inherit !important;
+  font-size: inherit !important;
+  line-height: inherit !important;
+  font-weight: inherit !important;
+  border-radius: 8px !important;
+  outline: none !important;
+  transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s,
+    -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s !important;
+  -webkit-tap-highlight-color: transparent !important;
+  background: transparent !important;
+  border: none !important;
+  color: inherit !important;
+  display: block !important;
+  margin: 0px !important;
+  padding: 0px !important;
+  text-align: inherit !important;
+  text-decoration: none !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+
+.onlineExperience:focus-visible {
+  outline: none !important;
+  transition: box-shadow 0.2s ease 0s !important;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.8), 0 0 0 4px #222222 !important;
+}
+
+.onlineExperienceBase {
+  cursor: pointer;
+  text-align: center;
+  outline: none;
+  display: inline-block;
+  pointer-events: auto;
+  position: relative;
+  z-index: 0;
+}
+
+.onlineExperienceBase:hover {
+  text-decoration: none;
+}
+
+.onlineExperienceAnimation {
+  position: relative;
+  margin: 10px 12px;
+}
+
+.onlineExperienceAnimation::after {
+  content: '';
+  height: 2px;
+  position: absolute;
+  top: calc(100% + 8px);
+  width: 100%;
+  background-color: currentcolor;
+  inset-inline: 0;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+}
+
+.onlineExperienceAnimation:hover {
+  opacity: 0.65;
+}
+
+.onlineExperienceAnimation:hover::after {
+  opacity: 0.65;
+  transform: scaleX(1);
+}
+
+@media (min-width: 950px) {
+  .firstTwoTabs {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+  }
+
+  .onlineExperienceBase {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 600;
+  }
+}
+
+@media (min-width: 1128px) {
+  .firstTwoTabs {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  .textBox {
+    margin: 10px 16px;
+  }
+
+  .text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .onlineExperienceBase {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 400;
+  }
+
+  .onlineExperienceAnimation {
+    margin: 10px 16px;
+  }
+}

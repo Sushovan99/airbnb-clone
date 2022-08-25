@@ -1,5 +1,6 @@
 :root {
   --brand-color: #ff385c;
+  --text-white: #ffffff;
   --text-dark: #222222;
   --text-light: #717171;
   --text-light-1: #9e9c9c;
@@ -19,6 +20,14 @@
     #bd1e59 75%,
     #bd1e59 100%
   );
+  --big-search-form_background: #ebebeb;
+  --big-search-button_background_hover: #dddddd;
+  --big-search-form_background_active: #ebebeb;
+  --query-input_flex: 1.25 0 0%;
+  --input-with-search-button_flex: 1 0 0%;
+  --split-date-input_flex: 1 0 0%;
+  --background-white: #ffffff;
+  --max-content-width: 1760px;
 }
 
 *,
@@ -27,6 +36,29 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+}
+
+input,
+textarea,
+select,
+button,
+a {
+  font-family: inherit;
+  font-size: 100%;
+}
+
+html {
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  line-break: strict;
+  -webkit-font-smoothing: antialiased;
+}
+
+div {
+  display: block;
 }
 
 a {

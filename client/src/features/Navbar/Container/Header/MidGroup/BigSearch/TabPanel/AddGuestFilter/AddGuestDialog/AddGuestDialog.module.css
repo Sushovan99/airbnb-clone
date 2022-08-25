@@ -1,0 +1,21 @@
+.container {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1;
+  max-height: calc(100vh - 200px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--background-white);
+  border-radius: 32px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 4%), 0 8px 16px rgb(0 0 0 / 15%);
+  margin-top: 12px;
+  padding: 16px 32px;
+}
+
+@media (min-width: 950px) {
+  .container {
+    max-height: calc(100vh - 150px);
+  }
+}

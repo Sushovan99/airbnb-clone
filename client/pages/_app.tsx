@@ -6,7 +6,7 @@ import { ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { theme } from '@utils/theme';
-import { Layout } from 'components/index';
+import { Layout } from '@src/components';
 import store from '@store/index';
 import { Provider } from 'react-redux';
 import createEmotionCache from '@utils/emotion/emotionCache';
@@ -16,6 +16,7 @@ import { styletron } from '@utils/styletron';
 import '@fontsource/be-vietnam-pro/300.css';
 import '@fontsource/be-vietnam-pro/400.css';
 import '@fontsource/be-vietnam-pro/500.css';
+import '@fontsource/be-vietnam-pro/600.css';
 import '@fontsource/be-vietnam-pro/700.css';
 import '@styles/globals.css';
 
@@ -40,7 +41,10 @@ function MyApp(props: AppPropsWithLayout) {
     return Component.getLayout(
       <>
         <Head>
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
+          <meta
+            name="viewport"
+            content="initial-scale=1, width=device-width shrink-to-fit=no"
+          />
         </Head>
         <CssBaseline />
         <Component {...pageProps} />

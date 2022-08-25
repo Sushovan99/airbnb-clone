@@ -1,0 +1,92 @@
+.littleSearchBase {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: left;
+  transform-origin: 0% 0%;
+}
+
+.littleSearchVisible {
+  width: 100%;
+  visibility: visible;
+  transform: scale(1, 1) translateY(0);
+  transition: transform 250ms ease, opacity 300ms ease 100ms,
+    visibility 0ms 150ms;
+}
+
+.littleSearchHidden {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: scale(2.5 1.375) translate(-60px, 122px);
+  will-change: transform opacity;
+}
+
+.littleSearchAnimate {
+  transition: transform 250ms ease, opacity 100ms ease, visibility 0ms 50ms;
+}
+
+.expandableSearchBase {
+  position: absolute;
+  z-index: 2;
+  left: 0;
+  width: 100%;
+  text-align: left;
+  padding-left: 24px;
+  padding-right: 24px;
+  transform-origin: 60px 0%;
+}
+
+.expandableSearchClose {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transform: scale(0.4, 0.7272727272727273) translate(60px, -122px);
+  will-change: transform, opacity;
+}
+
+.expandableSearchOpen {
+  transition: transform 250ms ease, opacity 200ms ease;
+}
+
+@media (min-width: 375px) {
+  .expandableSearchBase {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 744px) {
+  .expandableSearchBase {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 950px) {
+  .littleSearchHidden {
+    transform: scale(2.857142857142857, 1.375) translateY(58px);
+  }
+
+  .littleSearchBase {
+    transform-origin: 50% 0;
+    margin: 0 auto;
+  }
+
+  .expandableSearchBase {
+    top: 0;
+    transform-origin: 50% 0%;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .expandableSearchClose {
+    transform: scale(0.35, 0.7272727272727273) translateY(-58px);
+  }
+}
+
+@media (min-width: 1128px) {
+  .expandableSearchBase {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+}

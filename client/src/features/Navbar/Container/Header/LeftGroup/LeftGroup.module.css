@@ -1,0 +1,38 @@
+.container {
+  flex: 0 0 auto;
+  z-index: 100;
+}
+
+.bigLogoBox {
+  display: none;
+}
+
+.link {
+  align-items: center;
+  display: inline-flex;
+  height: fit-content;
+  padding: 8px;
+  position: relative;
+  vertical-align: middle;
+}
+
+.link:focus-visible {
+  outline: 2px solid black;
+  border-radius: 10px;
+}
+
+@media (min-width: 950px) {
+  .container {
+    flex: 1 0 140px;
+  }
+}
+
+@media (min-width: 1128px) {
+  .bigLogoBox {
+    display: block;
+  }
+
+  .smallLogoBox {
+    display: none;
+  }
+}

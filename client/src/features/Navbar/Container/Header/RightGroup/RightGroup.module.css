@@ -1,0 +1,10 @@
+.container {
+  flex: 1 0 auto;
+  z-index: 100;
+}
+
+@media (min-width: 950px) {
+  .container {
+    flex: 1 0 140px;
+  }
+}

@@ -1,0 +1,19 @@
+.form {
+  margin: 0 auto;
+  max-width: 850px;
+}
+
+.bigLogoBox {
+  padding: 12px 8px;
+  display: none;
+}
+
+@media (min-width: 1128px) {
+  .bigLogoBox {
+    display: block;
+  }
+
+  .smallLogoBox {
+    display: none;
+  }
+}

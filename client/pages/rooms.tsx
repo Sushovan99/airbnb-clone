@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { ReactElement } from 'react';
 import type { NextPageWithLayout } from './_app';
 import { ThemeProvider } from '@mui/material/styles';
-import { Footer } from 'features/index';
+import { FooterContainer } from '@src/features/Footer';
 import { theme } from '@utils/theme';
 import { Provider } from 'react-redux';
 import store from '@store/index';
@@ -29,7 +29,7 @@ Rooms.getLayout = function (page: ReactElement) {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         {page}
-        <Footer />
+        <FooterContainer />
       </ThemeProvider>
     </Provider>
   );

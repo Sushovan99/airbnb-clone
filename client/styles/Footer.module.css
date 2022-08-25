@@ -1,27 +1,82 @@
-.footer {
-  width: 100vw;
-  height: 48px;
-  border-top: 1px solid var(--border-color);
+.footerContainer {
   position: fixed;
   bottom: 0;
   z-index: 8;
+  display: grid;
+  pointer-events: none;
+  grid-template: repeat(2, auto) / repeat(3, 33.333%);
+  grid-template-areas:
+    'left center right'
+    'bottom bottom bottom';
+}
+
+.footerArea {
+  grid-area: bottom;
+  cursor: auto;
+  border-top: 1px solid var(--border-color);
   background-color: white;
+  pointer-events: auto;
 }
 
 .container {
-  max-width: 1120px;
   height: inherit;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  margin: 0 auto;
+  max-width: 1760px;
+}
+
+.container::after {
+  display: flex;
+  content: '';
+}
+
+.container::before {
+  display: flex;
+  content: '';
+}
+
+.container a:hover {
+  text-decoration: underline;
+}
+
+.mapButton {
+  margin-bottom: 40px;
+  grid-area: center;
+  justify-self: center;
+  align-self: end;
 }
 
 .separator {
   width: 19px;
 }
 
-.container a:hover {
-  text-decoration: underline;
+@media (min-width: 375px) {
+  .container {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (min-width: 744px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 950px) {
+  .container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+@media (min-width: 1128px) {
+  .container {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
 }

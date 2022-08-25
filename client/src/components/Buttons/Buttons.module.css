@@ -1,0 +1,96 @@
+.gradientSearchBtn {
+  appearance: none;
+  color: inherit;
+  display: inline-block;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  outline: 0;
+  overflow: visible;
+  text-decoration: none;
+  user-select: auto;
+  outline: none;
+  color: var(--text-white);
+  font-size: 16px;
+  font-weight: 500;
+  height: 48px;
+  line-height: 16px;
+  max-width: 48px;
+  overflow: hidden;
+  position: relative;
+  vertical-align: middle;
+  z-index: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  background-color: var(--brand-color);
+  border-radius: 24px;
+  transition: 0.2s max-width cubic-bezier(0.32, 0, 0.65, 1);
+}
+
+.gradientSearchBtn::before {
+  background: linear-gradient(to right, #e61e4d 0%, #e31c5f 50%, #d70466 100%);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  position: absolute;
+  top: 0;
+  will-change: opacity;
+  z-index: 0;
+  transition: 0.2s opacity cubic-bezier(0.35, 0, 0.65, 1);
+}
+
+.gradientSearchBtn:focus-visible {
+  outline: 2px solid black;
+}
+
+.iconBtn::before {
+  opacity: 0;
+}
+
+.gradientContainer {
+  position: absolute !important;
+  top: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+  width: 100% !important;
+  height: 100% !important;
+  mask-image: radial-gradient((center, white, black));
+  -webkit-mask-image: -webkit-radial-gradient(center, white, black) !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+}
+
+.gradient {
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-width: 200px !important;
+  background-size: 200% 200% !important;
+  opacity: 0 !important;
+  transition: opacity 1.25s ease 0s !important;
+  background-image: var(--brand-gradient-radial);
+}
+
+.gradient:hover {
+  opacity: 1 !important;
+}
+
+@supports (--a: a) {
+  .gradientSearchBtn {
+    background-color: var(--brand-color);
+  }
+}
+
+@media (min-width: 950px) {
+  .iconBtnWithText {
+    transition: none;
+    max-width: 200px;
+  }
+}
