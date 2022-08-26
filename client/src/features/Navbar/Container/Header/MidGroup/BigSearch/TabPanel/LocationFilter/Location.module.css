@@ -12,6 +12,7 @@
   border: 1px solid transparent;
   border-radius: 32px;
   padding: 14px 32px;
+  outline: none;
 }
 
 .queryBtn::before {
@@ -40,6 +41,18 @@
   background-clip: padding-box;
   border: 1px solid transparent;
   border-radius: 32px;
+}
+
+.queryBtn:focus-visible::after {
+  background-color: #ffff;
+  border-color: #ffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  left: 0%;
+  right: 0;
+}
+
+.queryBtn:focus-visible::before {
+  display: block;
 }
 
 .queryBtnActive {

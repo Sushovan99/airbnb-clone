@@ -1,4 +1,4 @@
-import { Box } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
 import { toggleCheckOut } from '@store/feature/tabPanel';
 import styles from '../../TabPanel.module.css';
@@ -21,9 +21,7 @@ export const CheckOut: React.FC = () => {
         margin: '-1px',
       }}
     >
-      <Box
-        component="div"
-        role="button"
+      <Button
         className={`${styles.dateBtn} ${
           isCheckOutBtnActive ? styles.dateBtnActive : styles.dateBtnInActive
         }`}
@@ -64,7 +62,7 @@ export const CheckOut: React.FC = () => {
             {checkOutDate ? checkOutDate : 'Add dates'}
           </Box>
         </Box>
-      </Box>
+      </Button>
     </Box>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Box, IconButton } from '@mui/material';
+import { Box, Button, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { useAppSelector, useAppDispatch } from '@store/hooks';
 import {
@@ -46,11 +46,13 @@ export const AddGuestFilter: React.FC = () => {
         position: 'relative',
         margin: '-1px',
         flex: 'var( --input-with-search-button_flex, 0.95 0 auto)',
+        outline: 'none',
       }}
     >
       <Box
         component="div"
         role="button"
+        tabIndex={0}
         className={`${styles.dateBtn} ${styles.addGuestBorder} ${
           isGuestFilterActive ? styles.dateBtnActive : styles.dateBtnInActive
         }`}

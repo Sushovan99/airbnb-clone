@@ -41,8 +41,10 @@ export const LocationFilter: React.FC = () => {
             isLocationFilterActive
               ? styles.queryBtnActive
               : styles.queryBtnInActive
-          } ${styles.focusAdded}`}
+          }`}
           htmlFor="bigsearch-query-location-input"
+          tabIndex={0}
+          onFocus={() => dispatch(setLocationActive())}
         >
           <Box sx={{ position: 'relative', zIndex: 1 }}>
             <Box

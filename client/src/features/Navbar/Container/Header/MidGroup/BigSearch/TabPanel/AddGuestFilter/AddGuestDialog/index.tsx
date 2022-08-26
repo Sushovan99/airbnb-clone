@@ -84,6 +84,7 @@ export const AddGuestDialog: React.FC = () => {
                     paddingTop: '20px',
                     paddingBottom: '24px',
                     paddingLeft: '8px',
+                    textAlign: 'left',
                   }}
                 >
                   <Box>

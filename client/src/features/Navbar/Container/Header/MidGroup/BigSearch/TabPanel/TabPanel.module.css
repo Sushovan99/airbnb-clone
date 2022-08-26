@@ -21,31 +21,18 @@
   );
 }
 
+/* COMMON STYLES FOR DATE & GUEST FILTER */
 .dateBtn {
-  text-align: left;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  margin: 0;
-  padding: 1px;
-  appearance: none;
-  color: inherit;
-  display: inline-block;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  outline: 0;
-  overflow: visible;
-  padding: 0;
-  text-align: inherit;
-  text-decoration: none;
-  user-select: auto;
-  outline: none;
-  display: block;
   flex: 1 0 0%;
+  display: block;
+  appearance: none;
+  text-align: left;
+  cursor: pointer;
   width: 0;
   z-index: 1;
+  padding: 1px;
+  margin: 0;
+  outline: none;
 }
 
 .dateBtn::before {
@@ -95,33 +82,34 @@
 }
 
 .dateBtnActive:focus-visible {
-  z-index: 2;
+  z-index: 2 !important;
 }
 
 .dateBtnActive:focus-visible::before {
-  display: block;
+  display: block !important;
 }
 
 .dateBtnActive:focus-visible::after {
-  -webkit-transition: box-shadow 0.2s ease;
-  transition: box-shadow 0.2s ease;
-  border-color: var(--text-dark);
-  box-shadow: 0 0 0 1px var(--text-dark);
+  -webkit-transition: box-shadow 0.2s ease !important;
+  transition: box-shadow 0.2s ease !important;
+  border-color: var(--text-dark) !important;
+  box-shadow: 0 0 0 1px var(--text-dark) !important;
 }
 
 .dateBtnInActive:focus-visible {
-  z-index: 2;
+  z-index: 2 !important;
 }
 
 .dateBtnInActive:focus-visible::before {
-  display: block;
+  display: block !important;
 }
 
 .dateBtnInActive:focus-visible::after {
-  -webkit-transition: box-shadow 0.2s ease;
-  transition: box-shadow 0.2s ease;
-  border-color: var(--text-dark);
-  box-shadow: 0 0 0 1px var(--text-dark);
+  -webkit-transition: box-shadow 0.2s ease !important;
+  transition: box-shadow 0.2s ease !important;
+  border-color: var(--text-dark) !important;
+  box-shadow: 0 0 0 1px var(--text-dark) !important;
+  padding: 0;
 }
 
 .dateBtnInActive:hover::after {
@@ -132,9 +120,10 @@
 }
 
 .dateBtnInActive:hover::before {
-  display: block;
+  display: block !important;
 }
 
+/* EXCLUSIVE GUEST FILTER STYLES */
 .addGuestBorder::before {
   border-right: 0;
 }
