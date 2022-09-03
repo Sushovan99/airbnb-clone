@@ -31,7 +31,9 @@ export const LittleSearchGroup: React.FC = () => {
         alignItems: 'center',
         justifyContent: 'space-around',
         transition: 'box-shadow .2s ease',
-        // whiteSpace: 'nowrap',
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis',
         '&:hover': {
           boxShadow: '0 2px 4px rgba(0,0,0,0.18)',
         },

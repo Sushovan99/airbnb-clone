@@ -1,0 +1,39 @@
+.containerGrid {
+  display: grid;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(var(--breakpoint-grid_columns), 1fr);
+  margin-block: 30px 80px;
+  gap: 24px 40px;
+  align-content: center;
+  cursor: pointer;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 744px) {
+  .containerGrid {
+    --breakpoint-grid_columns: 2;
+  }
+}
+
+@media (min-width: 950px) {
+  .containerGrid {
+    --breakpoint-grid_columns: 3;
+  }
+}
+
+@media (min-width: 1128px) {
+  .containerGrid {
+    --breakpoint-grid_columns: 3;
+  }
+}
+
+@media (min-width: 1280px) {
+  .containerGrid {
+    --breakpoint-grid_columns: 4;
+  }
+}

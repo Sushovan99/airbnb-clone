@@ -21,14 +21,10 @@
       "@styles/*": ["styles/*"],
       "@store/*": ["store/*"],
       "@utils/*": ["utils/*"],
-      "@public/*": ["public/*"]
+      "@public/*": ["public/*"],
+      "@data/*": ["data/*"]
     }
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "features/Navbar/RightGroup.tsx"
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

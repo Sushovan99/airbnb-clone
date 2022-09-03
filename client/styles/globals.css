@@ -28,6 +28,7 @@
   --split-date-input_flex: 1 0 0%;
   --background-white: #ffffff;
   --max-content-width: 1760px;
+  --breakpoint-grid_columns: 1;
 }
 
 *,

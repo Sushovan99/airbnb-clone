@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import { NextPage } from 'next';
 import { ReactElement, ReactNode } from 'react';
 import type { AppProps } from 'next/app';
@@ -35,6 +36,7 @@ type AppPropsWithLayout = MyAppProps & {
 };
 
 function MyApp(props: AppPropsWithLayout) {
+  const queryClient = new QueryClient();
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   if (Component.getLayout) {
@@ -57,10 +59,12 @@ function MyApp(props: AppPropsWithLayout) {
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
           <StyletronProvider value={styletron}>
-            <CssBaseline />
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
+            <QueryClientProvider client={queryClient}>
+              <CssBaseline />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </QueryClientProvider>
           </StyletronProvider>
         </ThemeProvider>
       </CacheProvider>
